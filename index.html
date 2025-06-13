@@ -132,11 +132,40 @@
             <div class="text-2xl font-bold text-slate-800 dark:text-white">
                 <a href="#">陈宗奕</a>
             </div>
-            <!-- 主题切换按钮 -->
-            <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                <i data-lucide="sun" class="sun-icon"></i>
-                <i data-lucide="moon" class="moon-icon hidden"></i>
-            </button>
+            <div class="flex items-center space-x-2">
+                 <!-- 联系方式图标 -->
+                <div class="relative group">
+                    <a href="mailto:chenzy2022@smail.nju.edu.cn" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        chenzy2022@smail.nju.edu.cn
+                    </div>
+                </div>
+                <div class="relative group">
+                    <a href="tel:15751668669" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </a>
+                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        15751668669
+                    </div>
+                </div>
+                <div class="relative group">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        GitHub 主页
+                    </div>
+                </div>
+                <!-- 分割线 -->
+                <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
+                <!-- 主题切换按钮 -->
+                <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon hidden"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -552,150 +581,154 @@
     </footer>
 
     <script>
-        // 渲染 Lucide 图标
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            // 渲染 Lucide 图标
+            lucide.createIcons();
 
-        // 获取所有视图和按钮
-        const mainView = document.getElementById('main-view');
-        const detailViewContainer = document.getElementById('detail-view-container');
-        
-        const tabButtonsContainer = document.getElementById('tab-buttons');
-        const tabButtons = tabButtonsContainer.querySelectorAll('.tab-button');
-        const tabIndicator = document.getElementById('tab-indicator');
-        const tabPanels = document.querySelectorAll('#tab-content .view-panel');
+            // 获取所有视图和按钮
+            const mainView = document.getElementById('main-view');
+            const detailViewContainer = document.getElementById('detail-view-container');
+            
+            const tabButtonsContainer = document.getElementById('tab-buttons');
+            const tabButtons = tabButtonsContainer.querySelectorAll('.tab-button');
+            const tabIndicator = document.getElementById('tab-indicator');
+            const tabPanels = document.querySelectorAll('#tab-content .view-panel');
 
-        const projectCards = document.querySelectorAll('#project-list [data-project-target]');
-        const backButtons = document.querySelectorAll('.back-to-main-btn');
-        const detailPanels = document.querySelectorAll('#detail-view-container .view-panel');
-        const projectNavButtons = document.querySelectorAll('.project-nav-btn');
+            const projectCards = document.querySelectorAll('#project-list [data-project-target]');
+            const backButtons = document.querySelectorAll('.back-to-main-btn');
+            const detailPanels = document.querySelectorAll('#detail-view-container .view-panel');
+            const projectNavButtons = document.querySelectorAll('.project-nav-btn');
 
-        const themeToggleButton = document.getElementById('theme-toggle');
-        const sunIcon = document.querySelector('.sun-icon');
-        const moonIcon = document.querySelector('.moon-icon');
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
 
-        // 主题切换逻辑
-        const applyTheme = (theme) => {
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
+            // 主题切换逻辑
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            };
+
+            themeToggleButton.addEventListener('click', () => {
+                const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', currentTheme);
+                applyTheme(currentTheme);
+            });
+            
+            // 页面加载时应用保存的主题
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+
+
+            // 更新指示器位置的函数
+            function updateIndicator(activeButton) {
+                if (!activeButton) return;
+                tabIndicator.style.left = `${activeButton.offsetLeft}px`;
+                tabIndicator.style.width = `${activeButton.offsetWidth}px`;
             }
-        };
+            
+            // 切换选项卡
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const currentActiveButton = tabButtonsContainer.querySelector('.active');
+                    if (currentActiveButton) {
+                        currentActiveButton.classList.remove('active');
+                    }
+                    button.classList.add('active');
+                    
+                    updateIndicator(button);
 
-        themeToggleButton.addEventListener('click', () => {
-            const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
-            applyTheme(currentTheme);
-        });
-        
-        // 页面加载时应用保存的主题
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        applyTheme(savedTheme);
-
-
-        // 更新指示器位置的函数
-        function updateIndicator(activeButton) {
-            tabIndicator.style.left = `${activeButton.offsetLeft}px`;
-            tabIndicator.style.width = `${activeButton.offsetWidth}px`;
-        }
-        
-        // 切换选项卡
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const currentActiveButton = tabButtonsContainer.querySelector('.active');
-                currentActiveButton.classList.remove('active');
-                button.classList.add('active');
-                
-                updateIndicator(button);
-
-                const targetId = button.dataset.target;
-                tabPanels.forEach(panel => {
-                    const isActive = panel.id === targetId;
-                    panel.classList.toggle('hidden', !isActive);
-                    panel.classList.toggle('is-active', isActive);
+                    const targetId = button.dataset.target;
+                    tabPanels.forEach(panel => {
+                        const isActive = panel.id === targetId;
+                        panel.classList.toggle('hidden', !isActive);
+                        panel.classList.toggle('is-active', isActive);
+                    });
                 });
             });
-        });
 
-        // 显示详情视图
-        function showDetailView(targetId) {
-            mainView.classList.remove('is-active');
-            mainView.classList.add('hidden');
-            detailViewContainer.classList.remove('hidden');
-            
-            // 确保所有详情页先隐藏，再显示目标页
-            detailPanels.forEach(p => p.classList.add('hidden'));
-            const targetPanel = document.getElementById(targetId);
-            if(targetPanel) {
-                 targetPanel.classList.remove('hidden');
-                 targetPanel.classList.add('is-active');
-            }
-            window.scrollTo(0, 0); // 切换视图后滚动到页面顶部
-        }
-
-        // 显示主视图
-        function showMainView() {
-            detailViewContainer.classList.add('hidden');
-            mainView.classList.remove('hidden');
-            mainView.classList.add('is-active');
-        }
-
-        // 为项目卡片添加点击事件
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const targetId = card.dataset.projectTarget;
-                showDetailView(targetId);
-            });
-        });
-        
-        // 为项目详情页导航按钮添加点击事件
-        projectNavButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const targetId = button.dataset.navTarget;
-                showDetailView(targetId);
-            });
-        });
-
-        // 为返回按钮添加点击事件
-        backButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                showMainView();
-            });
-        });
-
-        // 智能滚动动画的观察器
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // 当元素进入视窗时，移除初始状态，触发进入动画
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove('initial-state');
-                } 
-                // 当元素离开视窗时，重新设置回初始状态，为下一次进入做准备
-                else {
-                    entry.target.classList.add('initial-state');
+            // 显示详情视图
+            function showDetailView(targetId) {
+                mainView.classList.remove('is-active');
+                mainView.classList.add('hidden');
+                detailViewContainer.classList.remove('hidden');
+                
+                // 确保所有详情页先隐藏，再显示目标页
+                detailPanels.forEach(p => p.classList.add('hidden'));
+                const targetPanel = document.getElementById(targetId);
+                if(targetPanel) {
+                     targetPanel.classList.remove('hidden');
+                     setTimeout(() => targetPanel.classList.add('is-active'), 10);
                 }
+                window.scrollTo(0, 0); // 切换视图后滚动到页面顶部
+            }
+
+            // 显示主视图
+            function showMainView() {
+                detailViewContainer.classList.add('hidden');
+                mainView.classList.remove('hidden');
+                mainView.classList.add('is-active');
+            }
+
+            // 为项目卡片添加点击事件
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const targetId = card.dataset.projectTarget;
+                    showDetailView(targetId);
+                });
             });
-        }, {
-            threshold: 0.2 // 当元素20%可见时触发
-        });
+            
+            // 为项目详情页导航按钮添加点击事件
+            projectNavButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const targetId = button.dataset.navTarget;
+                    showDetailView(targetId);
+                });
+            });
+
+            // 为返回按钮添加点击事件
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    showMainView();
+                });
+            });
+
+            // 智能滚动动画的观察器
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // 当元素进入视窗时，移除初始状态，触发进入动画
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('initial-state');
+                    } 
+                    // 当元素离开视窗时，重新设置回初始状态，为下一次进入做准备
+                    else {
+                        entry.target.classList.add('initial-state');
+                    }
+                });
+            }, {
+                threshold: 0.2 // 当元素20%可见时触发
+            });
 
 
-        // 应用观察器到所有需要动画的元素
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            scrollObserver.observe(element);
-        });
-        
-        // 页面加载时初始化指示器位置
-        window.addEventListener('load', () => {
-             const initialActiveButton = tabButtonsContainer.querySelector('.active');
-             if(initialActiveButton) {
-                updateIndicator(initialActiveButton);
-             }
+            // 应用观察器到所有需要动画的元素
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                scrollObserver.observe(element);
+            });
+            
+            // 初始化指示器位置
+            const initialActiveButton = tabButtonsContainer.querySelector('.active');
+            if (initialActiveButton) {
+                // 延迟执行以确保布局计算完成
+                setTimeout(() => updateIndicator(initialActiveButton), 100);
+            }
         });
 
     </script>
