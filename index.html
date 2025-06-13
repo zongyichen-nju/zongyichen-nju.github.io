@@ -54,10 +54,72 @@
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         
-        /* 延迟动画类 */
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
+        /* 选项卡按钮样式 */
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            transition: color 0.2s ease-out, background-color 0.2s ease-out;
+        }
+
+        /* 选项卡激活状态样式 */
+        .tab-button.active {
+            color: #2563eb; /* text-blue-600 */
+        }
+        .dark .tab-button.active {
+            color: #3b82f6; /* dark:text-blue-500 */
+        }
+
+        /* 选项卡悬停效果 */
+        .tab-button:not(.active):hover {
+            background-color: #eff6ff; /* bg-blue-50 */
+            color: #1d4ed8; /* text-blue-700 */
+        }
+        .dark .tab-button:not(.active):hover {
+            background-color: #1e293b; /* dark:bg-slate-800 */
+            color: #60a5fa; /* dark:text-blue-400 */
+        }
+
+
+        /* 视图/面板切换动画 */
+        @keyframes slideFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(15px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+        .view-panel.is-active {
+            animation: slideFadeIn 0.4s ease-out;
+        }
+
+        /* 智能滚动动画样式 */
+        .animate-on-scroll {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .animate-on-scroll.initial-state {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* 全新课程卡片设计 */
+        .course-card {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            display: block; /* 使整个<a>标签可点击 */
+        }
+
+        .course-card:hover {
+             transform: translateY(-5px) scale(1.03) !important;
+             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .course-card:active {
+            transform: translateY(-2px) scale(1.01) !important;
+        }
 
     </style>
 </head>
@@ -69,140 +131,418 @@
             <div class="text-2xl font-bold text-slate-800 dark:text-white">
                 <a href="#">陈宗奕</a>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium">关于我</a>
-                <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium">项目经历</a>
-                <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium">联系我</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden flex items-center text-slate-600 dark:text-slate-300">
-                <i data-lucide="menu"></i>
-            </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
-            <a href="#about" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-blue-500">关于我</a>
-            <a href="#projects" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-blue-500">项目经历</a>
-            <a href="#contact" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-blue-500">联系我</a>
-        </div>
     </header>
 
     <!-- 主体内容 -->
     <main>
-        <!-- 个人简介部分 -->
-        <section id="hero" class="gradient-background">
-            <div class="container mx-auto px-6 py-24 text-center">
-                <img class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white dark:border-slate-700 shadow-xl" 
-                     src="https://placehold.co/160x160/67e8f9/0f172a?text=ZY" 
-                     alt="个人头像"
-                     onerror="this.onerror=null;this.src='https://placehold.co/160x160/e0e0e0/333333?text=图片加载失败';">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-4 animate-fade-in-up">你好，我是陈宗奕</h1>
-                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto animate-fade-in-up delay-200">
-                    一名来自南京大学的本科生，主修智能科学与技术，对机器学习领域充满科研热情。
-                </p>
-            </div>
-        </section>
-
-        <!-- 关于我 -->
-        <section id="about" class="py-24 bg-white dark:bg-slate-900/50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-16 text-slate-800 dark:text-white">关于我</h2>
-                <div class="max-w-4xl mx-auto grid md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-3 text-lg text-slate-700 dark:text-slate-300 space-y-4">
-                        <p>我具备深度思考和快速学习新技术的能力，对科研探索充满热情。同时，我抗压能力强，善于交流沟通，是一个热爱生活的人。</p>
-                        <p>拥有扎实的机器学习与深度学习理论基础，及丰富的科研训练经历。</p>
-                    </div>
-                    <div class="md:col-span-2 bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
-                        <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">教育背景</h3>
-                        <ul class="space-y-2 text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start"><i data-lucide="school" class="w-5 h-5 mr-3 mt-1 text-blue-500"></i><span><strong>南京大学</strong><br>智能科学与技术</span></li>
-                            <li class="flex items-start"><i data-lucide="graduation-cap" class="w-5 h-5 mr-3 mt-1 text-blue-500"></i><span>GPA: 4.44/5.0 (27/150)</span></li>
-                            <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 mr-3 mt-1 text-blue-500"></i><span>人民奖学金</span></li>
-                        </ul>
-                    </div>
+        <!-- 主视图，包含简介和选项卡 -->
+        <div id="main-view" class="view-panel is-active">
+            <section id="hero" class="gradient-background">
+                <div class="container mx-auto px-6 py-20 text-center">
+                    <img class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white dark:border-slate-700 shadow-xl" 
+                         src="https://placehold.co/160x160/67e8f9/0f172a?text=ZY" 
+                         alt="个人头像"
+                         onerror="this.onerror=null;this.src='https://placehold.co/160x160/e0e0e0/333333?text=图片加载失败';">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
+                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                        一名来自南京大学的本科生，主修智能科学与技术，对机器学习领域充满科研热情。
+                    </p>
                 </div>
-                 <div class="max-w-6xl mx-auto mt-16">
-                    <h3 class="text-2xl font-bold text-center mb-8 text-slate-800 dark:text-white">核心能力</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">机器学习导论 (94)</span></div>
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">数据挖掘 (96)</span></div>
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">数学建模 (95)</span></div>
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">数据结构 (95)</span></div>
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">高级程序设计 (94)</span></div>
-                        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg"><span class="font-semibold">操作系统 (95)</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 项目经历 -->
-        <section id="projects" class="py-24 bg-slate-50 dark:bg-slate-900">
-             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-16 text-slate-800 dark:text-white">项目经历</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- 项目 1 -->
-                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover">
-                        <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/38bdf8/ffffff?text=统一核函数研究" alt="统一的核函数研究">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">统一的核函数研究</h3>
-                            <p class="text-slate-600 dark:text-slate-400 mb-4 h-24">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
-                            <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
-                                <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">评级优秀</span>
-                                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文投稿中</span>
+            <div class="container mx-auto px-6 py-12">
+                <div class="relative flex justify-center border-b border-slate-200 dark:border-slate-700 mb-12">
+                    <div id="tab-buttons">
+                        <button data-target="about-panel" class="tab-button active text-lg font-semibold text-slate-600 dark:text-slate-300">关于我</button>
+                        <button data-target="projects-panel" class="tab-button text-lg font-semibold text-slate-600 dark:text-slate-300">项目经历</button>
+                    </div>
+                    <div id="tab-indicator" class="absolute bottom-0 h-0.5 bg-blue-600 dark:bg-blue-500 transition-all duration-300 ease-out"></div>
+                </div>
+
+
+                <div id="tab-content">
+                    <div id="about-panel" class="view-panel is-active">
+                        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                            <div class="text-lg text-slate-700 dark:text-slate-300 space-y-4">
+                                <p>我是一名对技术充满热忱的探索者，尤其醉心于机器学习的无限可能。在南京大学的学术殿堂中，我不仅构筑了坚实的理论基石，更在多个科研项目中将知识付诸实践，享受着从理论到应用、从抽象到具象的创造过程。</p>
+                                <p>我享受深度思考带来的挑战，也乐于在团队协作中沟通交流、碰撞思想。面对压力，我能保持坚韧；面对生活，我始终心怀热忱。</p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700/50 space-y-4">
+                               <div class="flex items-center space-x-4">
+                                   <i data-lucide="school" class="w-10 h-10 text-blue-500 flex-shrink-0"></i>
+                                   <div>
+                                       <h4 class="font-bold text-slate-800 dark:text-white">南京大学</h4>
+                                       <p class="text-sm text-slate-500 dark:text-slate-400">智能科学与技术</p>
+                                   </div>
+                               </div>
+                               <div class="border-t border-slate-200 dark:border-slate-700 my-4"></div>
+                               <div class="grid grid-cols-2 gap-4 text-sm">
+                                   <div>
+                                       <p class="text-slate-500 dark:text-slate-400">在校时间</p>
+                                       <p class="font-semibold text-slate-700 dark:text-slate-200">2022.09 - 至今</p>
+                                   </div>
+                                   <div>
+                                       <p class="text-slate-500 dark:text-slate-400">学历</p>
+                                       <p class="font-semibold text-slate-700 dark:text-slate-200">本科在读</p>
+                                   </div>
+                                    <div>
+                                       <p class="text-slate-500 dark:text-slate-400">GPA / 排名</p>
+                                       <p class="font-semibold text-slate-700 dark:text-slate-200">4.44 / 5.0 (27/150)</p>
+                                   </div>
+                                   <div>
+                                       <p class="text-slate-500 dark:text-slate-400">所获奖项</p>
+                                       <p class="font-semibold text-slate-700 dark:text-slate-200">人民奖学金</p>
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                         <div class="max-w-6xl mx-auto mt-20">
+                            <h3 class="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-white">主修课程</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                                <!-- 课程卡片 1 -->
+                                <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="brain-circuit" class="w-6 h-6 text-blue-500 dark:text-blue-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">机器学习导论</h4>
+                                            <p class="font-bold text-blue-500 dark:text-blue-400 text-lg text-left">94分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 2 -->
+                                 <a href="https://baike.baidu.com/item/数据挖掘" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/50 dark:to-emerald-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="database-zap" class="w-6 h-6 text-green-500 dark:text-green-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数据挖掘</h4>
+                                            <p class="font-bold text-green-500 dark:text-green-400 text-lg text-left">96分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 3 -->
+                                <a href="https://baike.baidu.com/item/数学建模" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-purple-100 to-violet-200 dark:from-purple-900/50 dark:to-violet-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="sigma" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数学建模</h4>
+                                            <p class="font-bold text-purple-500 dark:text-purple-400 text-lg text-left">95分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 4 -->
+                                <a href="https://baike.baidu.com/item/数据结构" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="git-merge" class="w-6 h-6 text-yellow-500 dark:text-yellow-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数据结构与算法</h4>
+                                            <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg text-left">95分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 5 -->
+                                <a href="https://baike.baidu.com/item/高级语言程序设计" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-red-100 to-rose-200 dark:from-red-900/50 dark:to-rose-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="code-xml" class="w-6 h-6 text-red-500 dark:text-red-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">高级程序设计</h4>
+                                            <p class="font-bold text-red-500 dark:text-red-400 text-lg text-left">94分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 6 -->
+                                <a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/50 dark:to-teal-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="hard-drive" class="w-6 h-6 text-cyan-500 dark:text-cyan-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">操作系统</h4>
+                                            <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg text-left">95分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 7 -->
+                                <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">线性代数</h4>
+                                            <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg text-left">95分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 8 -->
+                                <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">微积分</h4>
+                                            <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg text-left">93分</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- 课程卡片 9 -->
+                                <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数字信号处理</h4>
+                                            <p class="font-bold text-orange-500 dark:text-orange-400 text-lg text-left">94分</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 项目 2 -->
-                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover">
-                         <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/fbbf24/1f2937?text=小样本学习复现" alt="小样本学习论文复现">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">小样本学习论文复现</h3>
-                            <p class="text-slate-600 dark:text-slate-400 mb-4 h-24">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
-                            <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
-                               <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">精度误差<3%</span>
-                               <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-yellow-900/50 dark:text-yellow-300">LibFewShot</span>
+                    <div id="projects-panel" class="view-panel hidden">
+                        <div id="project-list" class="max-w-3xl mx-auto space-y-8">
+                            <!-- 项目卡片将通过JS绑定事件 -->
+                             <div data-project-target="project-detail-1" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
+                                <div class="md:w-1/3 bg-gradient-to-br from-blue-400 to-sky-500 flex flex-col items-center justify-center p-8 text-white">
+                                     <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
+                                     <span class="text-5xl font-bold mt-2">01</span>
+                                     <p class="font-semibold">项目</p>
+                                </div>
+                                <div class="p-6 flex flex-col md:w-2/3">
+                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">统一的核函数研究</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
+                                    <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
+                                        <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">评级优秀</span>
+                                        <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-sky-100 text-sky-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-sky-900/50 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-700 transition" onclick="event.stopPropagation()">
+                                            <i data-lucide="file-text" class="w-4 h-4 mr-1.5"></i>查看论文
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- 项目 3 -->
-                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover">
-                         <img class="w-full h-56 object-cover" src="https://placehold.co/600x400/4ade80/1f2937?text=随机特征探究" alt="基于随机特征的神经网络表示能力探究">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">神经网络表示能力探究</h3>
-                            <p class="text-slate-600 dark:text-slate-400 mb-4 h-24">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
-                            <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
-                                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
-                                <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold mr-2 px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
+                            <div data-project-target="project-detail-2" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
+                                <div class="md:w-1/3 bg-gradient-to-br from-amber-400 to-yellow-500 flex flex-col items-center justify-center p-8 text-white">
+                                     <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
+                                     <span class="text-5xl font-bold mt-2">02</span>
+                                     <p class="font-semibold">项目</p>
+                                </div>
+                                <div class="p-6 flex flex-col md:w-2/3">
+                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">小样本学习论文复现</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
+                                    <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
+                                       <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">精度误差&lt;3%</span>
+                                       <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-yellow-900/50 dark:text-yellow-300">LibFewShot</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-project-target="project-detail-3" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
+                                 <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-emerald-500 flex flex-col items-center justify-center p-8 text-white">
+                                     <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
+                                     <span class="text-5xl font-bold mt-2">03</span>
+                                     <p class="font-semibold">项目</p>
+                                </div>
+                                <div class="p-6 flex flex-col md:w-2/3">
+                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">神经网络表示能力探究</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
+                                    <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
+                                        <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
+                                        <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <section id="contact" class="py-24 bg-white dark:bg-slate-900/50">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-slate-800 dark:text-white">与我联系</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
+                    <div class="flex justify-center items-center gap-4">
+                         <a href="mailto:chenzy2022@smail.nju.edu.cn" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition text-lg shadow-lg hover:shadow-xl">发送邮件</a>
+                        <a href="#" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 p-3 bg-slate-100 dark:bg-slate-800 rounded-full transition" title="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                    </div>
+                    <p class="mt-8 text-slate-500 dark:text-slate-400">或致电: 15751668669</p>
+                </div>
+            </section>
+        </div>
 
-        <!-- 联系我 -->
-        <section id="contact" class="py-24 bg-white dark:bg-slate-900/50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4 text-slate-800 dark:text-white">与我联系</h2>
-                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-                    我正在积极寻找机器学习方向的科研机会，期待与您交流合作。
-                </p>
-                <div class="flex justify-center items-center gap-4">
-                     <a href="mailto:chenzy2022@smail.nju.edu.cn" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition text-lg shadow-lg hover:shadow-xl">
-                        发送邮件
-                    </a>
-                    <div class="flex justify-center space-x-4">
-                         <a href="#" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 p-3 bg-slate-100 dark:bg-slate-800 rounded-full transition" title="GitHub">
-                            <i data-lucide="github" class="w-6 h-6"></i>
-                        </a>
+        <!-- 项目详情视图容器 -->
+        <div id="detail-view-container" class="hidden">
+            <!-- 详情页 1 -->
+            <div id="project-detail-1" class="view-panel hidden">
+                <div class="container mx-auto px-6 py-12">
+                    <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                    </button>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
+                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">统一的核函数研究</h2>
+                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">校级本科生创新训练项目 (2023.12 - 2024.12)</p>
+                        
+                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <p>项目旨在构建统一的核函数（UNK），以联系现有的神经网络高斯过程（NNGP）以及神经正切核（NTK）这两个重要的理论框架。</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">1</div>
+                                        <p class="flex-1">担任项目第一负责人，负责项目相关的答辩工作。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">2</div>
+                                        <p class="flex-1">协助检验UNK理论，并借助该理论来改进传统的梯度下降方法。</p>
+                                    </li>
+                                     <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">3</div>
+                                        <p class="flex-1">负责项目所有实验部分，在MNIST数据集上验证了所提出UNK方法的有效性，其能在与基线方法准确率相近的情况下实现更快的收敛速度。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目成果</h3>
+                                <ul class="space-y-4">
+                                     <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="award" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">项目成功结项，最终评级为 **优秀**。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="file-text" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">已形成科研论文 <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">"A Unified Kernel for Neural Network Learning"</a>，以共同第二作者身份正在投稿中。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                                下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                 <div class="mt-8 text-slate-500 dark:text-slate-400">
-                    <p>或致电: 15751668669</p>
+            </div>
+            <!-- 详情页 2 -->
+            <div id="project-detail-2" class="view-panel hidden">
+                 <div class="container mx-auto px-6 py-12">
+                     <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                    </button>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
+                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">基于LibFewShot的小样本学习论文复现</h2>
+                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">机器学习课程项目 (2024.03 - 2024.07)</p>
+                        
+                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <p>小样本学习领域的方法多样，但实现方式各不相同，导致模型之间难以进行公平比较。本项目的目标是在统一的小样本学习库（LibFewShot）框架下，复现该领域的顶会论文代码，为后续研究人员提供高质量的参考基线。</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">1</div>
+                                        <p class="flex-1">在LibFewShot框架下，完整复现了《DiffKendall: A Novel Approach for Few-Shot Learning with Differentiable Kendall' Correlation》一文的核心代码。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">2</div>
+                                        <p class="flex-1">对复现代码进行了全面的性能测试，并将其结果与原论文中的数据进行对比分析，撰写了详细的项目报告。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目成果</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">代码实现精度与原论文相比，误差控制在 **3%** 以内。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="code-2" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">为开源社区贡献了高质量、标准化的代码资源，促进了小样本学习领域的可复现性研究。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
+                            <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
+                            </button>
+                             <button data-nav-target="project-detail-3" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                                下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            <!-- 详情页 3 -->
+            <div id="project-detail-3" class="view-panel hidden">
+                 <div class="container mx-auto px-6 py-12">
+                    <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                    </button>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
+                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">基于随机特征的神经网络表示能力探究</h2>
+                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">机器学习科研项目 (2024.10 - 至今)</p>
+                        
+                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <p>随机特征（Random Features）方法近年来在理论和应用层面均受到广泛关注，尤其在理解神经网络的表达能力、泛化性能等方面发挥了重要作用。本项目聚焦于结合随机特征和神经网络，探讨神经网络对随机特征的表示能力，并进行理论建模与实证验证。</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">1</div>
+                                        <p class="flex-1">借助传统随机特征理论，成功推导了神经网络重建后的随机特征模型的泛化误差与后验方差。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">2</div>
+                                        <p class="flex-1">在多个模拟数据集上进行了实验，验证了理论结果的正确性与可行性。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">当前进度</h3>
+                                <ul class="space-y-4">
+                                     <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">已通过实验完整验证理论可行性。</p>
+                                    </li>
+                                    <li class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="edit-3" class="w-4 h-4"></i></div>
+                                        <p class="flex-1">正在进行最后的实验整理，并着手撰写科研论文。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
+                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
+                            </button>
+                             <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                                返回第一个项目 <i data-lucide="rotate-ccw" class="w-4 h-4 ml-2 group-hover:rotate-[-90deg] transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
@@ -217,46 +557,121 @@
         // 渲染 Lucide 图标
         lucide.createIcons();
 
-        // 移动端菜单切换逻辑
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // 获取所有视图和按钮
+        const mainView = document.getElementById('main-view');
+        const detailViewContainer = document.getElementById('detail-view-container');
+        
+        const tabButtonsContainer = document.getElementById('tab-buttons');
+        const tabButtons = tabButtonsContainer.querySelectorAll('.tab-button');
+        const tabIndicator = document.getElementById('tab-indicator');
+        const tabPanels = document.querySelectorAll('#tab-content .view-panel');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const projectCards = document.querySelectorAll('#project-list [data-project-target]');
+        const backButtons = document.querySelectorAll('.back-to-main-btn');
+        const detailPanels = document.querySelectorAll('#detail-view-container .view-panel');
+        const projectNavButtons = document.querySelectorAll('.project-nav-btn');
 
-        // 滚动淡入动画
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up-active');
-                }
+        // 更新指示器位置的函数
+        function updateIndicator(activeButton) {
+            tabIndicator.style.left = `${activeButton.offsetLeft}px`;
+            tabIndicator.style.width = `${activeButton.offsetWidth}px`;
+        }
+        
+        // 切换选项卡
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const currentActiveButton = tabButtonsContainer.querySelector('.active');
+                currentActiveButton.classList.remove('active');
+                button.classList.add('active');
+                
+                updateIndicator(button);
+
+                const targetId = button.dataset.target;
+                tabPanels.forEach(panel => {
+                    const isActive = panel.id === targetId;
+                    panel.classList.toggle('hidden', !isActive);
+                    panel.classList.toggle('is-active', isActive);
+                });
             });
         });
 
-        document.querySelectorAll('.animate-fade-in-up').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-    
-    <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        // 显示详情视图
+        function showDetailView(targetId) {
+            mainView.classList.remove('is-active');
+            mainView.classList.add('hidden');
+            detailViewContainer.classList.remove('hidden');
+            
+            // 确保所有详情页先隐藏，再显示目标页
+            detailPanels.forEach(p => p.classList.add('hidden'));
+            const targetPanel = document.getElementById(targetId);
+            if(targetPanel) {
+                 targetPanel.classList.remove('hidden');
+                 targetPanel.classList.add('is-active');
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            window.scrollTo(0, 0); // 切换视图后滚动到页面顶部
         }
-        .animate-fade-in-up {
-            opacity: 0;
-        }
-        .animate-fade-in-up-active {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-    </style>
 
+        // 显示主视图
+        function showMainView() {
+            detailViewContainer.classList.add('hidden');
+            mainView.classList.remove('hidden');
+            mainView.classList.add('is-active');
+        }
+
+        // 为项目卡片添加点击事件
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const targetId = card.dataset.projectTarget;
+                showDetailView(targetId);
+            });
+        });
+        
+        // 为项目详情页导航按钮添加点击事件
+        projectNavButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const targetId = button.dataset.navTarget;
+                showDetailView(targetId);
+            });
+        });
+
+        // 为返回按钮添加点击事件
+        backButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                showMainView();
+            });
+        });
+
+        // 智能滚动动画的观察器
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // 当元素进入视窗时，移除初始状态，触发进入动画
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('initial-state');
+                } 
+                // 当元素离开视窗时，重新设置回初始状态，为下一次进入做准备
+                else {
+                    entry.target.classList.add('initial-state');
+                }
+            });
+        }, {
+            threshold: 0.2 // 当元素20%可见时触发
+        });
+
+
+        // 应用观察器到所有需要动画的元素
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            scrollObserver.observe(element);
+        });
+        
+        // 页面加载时初始化指示器位置
+        window.addEventListener('load', () => {
+             const initialActiveButton = tabButtonsContainer.querySelector('.active');
+             if(initialActiveButton) {
+                updateIndicator(initialActiveButton);
+             }
+        });
+
+    </script>
 </body>
 </html>
