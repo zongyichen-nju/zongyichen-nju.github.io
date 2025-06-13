@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* 使用更柔和的背景色 */
+            transition: background-color 0.3s ease;
         }
 
         .dark body {
@@ -123,7 +124,7 @@
 
     </style>
 </head>
-<body class="dark:bg-slate-900">
+<body class="transition-colors duration-300">
 
     <!-- 导航栏 -->
     <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-sm sticky top-0 z-50">
@@ -131,6 +132,11 @@
             <div class="text-2xl font-bold text-slate-800 dark:text-white">
                 <a href="#">陈宗奕</a>
             </div>
+            <!-- 主题切换按钮 -->
+            <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                <i data-lucide="sun" class="sun-icon"></i>
+                <i data-lucide="moon" class="moon-icon hidden"></i>
+            </button>
         </nav>
     </header>
 
@@ -145,7 +151,7 @@
                          alt="个人头像"
                          onerror="this.onerror=null;this.src='https://placehold.co/160x160/e0e0e0/333333?text=图片加载失败';">
                     <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
-                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    <p class="text-xl text-slate-800 dark:text-slate-100 max-w-3xl mx-auto">
                         一名来自南京大学的本科生，主修智能科学与技术，对机器学习领域充满科研热情。
                     </p>
                 </div>
@@ -155,6 +161,7 @@
                 <div class="relative flex justify-center border-b border-slate-200 dark:border-slate-700 mb-12">
                     <div id="tab-buttons">
                         <button data-target="about-panel" class="tab-button active text-lg font-semibold text-slate-600 dark:text-slate-300">关于我</button>
+                        <button data-target="courses-panel" class="tab-button text-lg font-semibold text-slate-600 dark:text-slate-300">主修课程</button>
                         <button data-target="projects-panel" class="tab-button text-lg font-semibold text-slate-600 dark:text-slate-300">项目经历</button>
                     </div>
                     <div id="tab-indicator" class="absolute bottom-0 h-0.5 bg-blue-600 dark:bg-blue-500 transition-all duration-300 ease-out"></div>
@@ -171,8 +178,11 @@
                             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700/50 space-y-4">
                                <div class="flex items-center space-x-4">
                                    <i data-lucide="school" class="w-10 h-10 text-blue-500 flex-shrink-0"></i>
-                                   <div>
-                                       <h4 class="font-bold text-slate-800 dark:text-white">南京大学</h4>
+                                   <div class="flex-grow">
+                                       <div class="flex justify-between items-baseline">
+                                           <h4 class="font-bold text-slate-800 dark:text-white">南京大学</h4>
+                                           <p class="text-sm font-semibold text-blue-500 dark:text-blue-400">本科在读</p>
+                                       </div>
                                        <p class="text-sm text-slate-500 dark:text-slate-400">智能科学与技术</p>
                                    </div>
                                </div>
@@ -182,133 +192,121 @@
                                        <p class="text-slate-500 dark:text-slate-400">在校时间</p>
                                        <p class="font-semibold text-slate-700 dark:text-slate-200">2022.09 - 至今</p>
                                    </div>
-                                   <div>
-                                       <p class="text-slate-500 dark:text-slate-400">学历</p>
-                                       <p class="font-semibold text-slate-700 dark:text-slate-200">本科在读</p>
-                                   </div>
                                     <div>
                                        <p class="text-slate-500 dark:text-slate-400">GPA / 排名</p>
                                        <p class="font-semibold text-slate-700 dark:text-slate-200">4.44 / 5.0 (27/150)</p>
                                    </div>
-                                   <div>
+                                   <div class="col-span-2">
                                        <p class="text-slate-500 dark:text-slate-400">所获奖项</p>
                                        <p class="font-semibold text-slate-700 dark:text-slate-200">人民奖学金</p>
                                    </div>
                                </div>
                             </div>
                         </div>
-                         <div class="max-w-6xl mx-auto mt-20">
-                            <h3 class="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-white">主修课程</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                                <!-- 课程卡片 1 -->
-                                <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
+                    </div>
+
+                     <div id="courses-panel" class="view-panel hidden">
+                        <div class="max-w-2xl mx-auto space-y-4">
+                            <!-- 课程卡片 -->
+                             <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="brain-circuit" class="w-6 h-6 text-blue-500 dark:text-blue-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">机器学习导论</h4>
-                                            <p class="font-bold text-blue-500 dark:text-blue-400 text-lg text-left">94分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">机器学习导论</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 2 -->
-                                 <a href="https://baike.baidu.com/item/数据挖掘" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/50 dark:to-emerald-900/50">
+                                    <p class="font-bold text-blue-500 dark:text-blue-400 text-lg">94分</p>
+                                </div>
+                            </a>
+                             <a href="https://baike.baidu.com/item/数据挖掘" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/50 dark:to-emerald-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="database-zap" class="w-6 h-6 text-green-500 dark:text-green-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数据挖掘</h4>
-                                            <p class="font-bold text-green-500 dark:text-green-400 text-lg text-left">96分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数据挖掘</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 3 -->
-                                <a href="https://baike.baidu.com/item/数学建模" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-purple-100 to-violet-200 dark:from-purple-900/50 dark:to-violet-900/50">
+                                    <p class="font-bold text-green-500 dark:text-green-400 text-lg">96分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/数学建模" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-purple-100 to-violet-200 dark:from-purple-900/50 dark:to-violet-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="sigma" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数学建模</h4>
-                                            <p class="font-bold text-purple-500 dark:text-purple-400 text-lg text-left">95分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数学建模</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 4 -->
-                                <a href="https://baike.baidu.com/item/数据结构" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-900/50">
+                                    <p class="font-bold text-purple-500 dark:text-purple-400 text-lg">95分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/数据结构" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="git-merge" class="w-6 h-6 text-yellow-500 dark:text-yellow-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数据结构与算法</h4>
-                                            <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg text-left">95分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数据结构与算法</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 5 -->
-                                <a href="https://baike.baidu.com/item/高级语言程序设计" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-red-100 to-rose-200 dark:from-red-900/50 dark:to-rose-900/50">
+                                    <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg">95分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/高级语言程序设计" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-red-100 to-rose-200 dark:from-red-900/50 dark:to-rose-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="code-xml" class="w-6 h-6 text-red-500 dark:text-red-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">高级程序设计</h4>
-                                            <p class="font-bold text-red-500 dark:text-red-400 text-lg text-left">94分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">高级程序设计</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 6 -->
-                                <a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/50 dark:to-teal-900/50">
+                                    <p class="font-bold text-red-500 dark:text-red-400 text-lg">94分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/50 dark:to-teal-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="hard-drive" class="w-6 h-6 text-cyan-500 dark:text-cyan-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">操作系统</h4>
-                                            <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg text-left">95分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">操作系统</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 7 -->
-                                <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
+                                    <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg">95分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">线性代数</h4>
-                                            <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg text-left">95分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">线性代数</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 8 -->
-                                <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
+                                    <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg">95分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">微积分</h4>
-                                            <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg text-left">93分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">微积分</h4>
                                     </div>
-                                </a>
-                                <!-- 课程卡片 9 -->
-                                <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
+                                    <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg">93分</p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
+                                <div class="flex items-center justify-between w-full">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
                                         </div>
-                                        <div class="flex-grow">
-                                            <h4 class="font-semibold text-slate-800 dark:text-white text-left whitespace-nowrap">数字信号处理</h4>
-                                            <p class="font-bold text-orange-500 dark:text-orange-400 text-lg text-left">94分</p>
-                                        </div>
+                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数字信号处理</h4>
                                     </div>
-                                </a>
-                            </div>
+                                    <p class="font-bold text-orange-500 dark:text-orange-400 text-lg">94分</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
@@ -570,6 +568,34 @@
         const backButtons = document.querySelectorAll('.back-to-main-btn');
         const detailPanels = document.querySelectorAll('#detail-view-container .view-panel');
         const projectNavButtons = document.querySelectorAll('.project-nav-btn');
+
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        // 主题切换逻辑
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        };
+
+        themeToggleButton.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+        
+        // 页面加载时应用保存的主题
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+
 
         // 更新指示器位置的函数
         function updateIndicator(activeButton) {
