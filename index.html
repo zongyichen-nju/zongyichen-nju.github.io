@@ -134,6 +134,23 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 锁定内容样式 */
+        .lock-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: hsla(0, 0%, 100%, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .dark .lock-overlay {
+             background-color: hsla(222, 47%, 11%, 0.5);
+        }
     </style>
 </head>
 <body class="transition-colors duration-300">
@@ -141,36 +158,36 @@
     <!-- 导航栏 -->
     <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-slate-800 dark:text-white">
+            <div class="text-2xl font-bold text-gray-900 dark:text-white">
                 <a href="#">陈宗奕</a>
             </div>
             <div class="flex items-center space-x-2">
                  <!-- 联系方式图标 -->
                 <div class="relative tooltip-trigger">
-                    <button data-tooltip-target="tooltip-mail-header" class="tooltip-btn p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <button data-tooltip-target="tooltip-mail-header" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="mail" class="w-5 h-5 pointer-events-none"></i>
                     </button>
-                    <div id="tooltip-mail-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
+                    <div id="tooltip-mail-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
                         chenzy2022@smail.nju.edu.cn
                     </div>
                 </div>
                 <div class="relative tooltip-trigger">
-                    <button data-tooltip-target="tooltip-phone-header" class="tooltip-btn p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <button data-tooltip-target="tooltip-phone-header" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="phone" class="w-5 h-5 pointer-events-none"></i>
                     </button>
-                    <div id="tooltip-phone-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
+                    <div id="tooltip-phone-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
                         +86 15751668669
                     </div>
                 </div>
                 <div class="relative tooltip-trigger">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="github" class="w-5 h-5"></i>
                     </a>
                 </div>
                 <!-- 分割线 -->
                 <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
                 <!-- 主题切换按钮 -->
-                <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                     <i data-lucide="sun" class="sun-icon"></i>
                     <i data-lucide="moon" class="moon-icon hidden"></i>
                 </button>
@@ -188,8 +205,8 @@
                          src="https://placehold.co/160x160/67e8f9/0f172a?text=ZY" 
                          alt="个人头像"
                          onerror="this.onerror=null;this.src='https://placehold.co/160x160/e0e0e0/333333?text=图片加载失败';">
-                    <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
-                    <p class="text-xl text-slate-800 dark:text-slate-100 max-w-3xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
+                    <p class="text-xl text-gray-900 dark:text-slate-100 max-w-3xl mx-auto">
                         一名来自南京大学的本科生，主修智能科学与技术，对机器学习领域充满科研热情。
                     </p>
                 </div>
@@ -198,9 +215,9 @@
             <div class="container mx-auto px-6 py-12">
                 <div class="relative flex justify-center border-b border-slate-200 dark:border-slate-700 mb-12">
                     <div id="tab-buttons">
-                        <button data-target="about-panel" class="tab-button active text-lg font-semibold text-slate-600 dark:text-slate-300">关于我</button>
-                        <button data-target="courses-panel" class="tab-button text-lg font-semibold text-slate-600 dark:text-slate-300">主修课程</button>
-                        <button data-target="projects-panel" class="tab-button text-lg font-semibold text-slate-600 dark:text-slate-300">项目经历</button>
+                        <button data-target="about-panel" class="tab-button active text-lg font-semibold text-gray-700 dark:text-slate-300">关于我</button>
+                        <button data-target="courses-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300">主修课程</button>
+                        <button data-target="projects-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300">项目经历</button>
                     </div>
                     <div id="tab-indicator" class="absolute bottom-0 h-0.5 bg-blue-600 dark:bg-blue-500 transition-all duration-300 ease-out"></div>
                 </div>
@@ -209,7 +226,7 @@
                 <div id="tab-content">
                     <div id="about-panel" class="view-panel is-active">
                         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-                            <div class="text-lg text-slate-700 dark:text-slate-300 space-y-4">
+                            <div class="text-lg text-gray-800 dark:text-slate-300 space-y-4">
                                 <p>我是一名对技术充满热忱的探索者，尤其醉心于机器学习的无限可能。在南京大学的学术殿堂中，我不仅构筑了坚实的理论基石，更在多个科研项目中将知识付诸实践，享受着从理论到应用、从抽象到具象的创造过程。</p>
                                 <p>我享受深度思考带来的挑战，也乐于在团队协作中沟通交流、碰撞思想。面对压力，我能保持坚韧；面对生活，我始终心怀热忱。</p>
                             </div>
@@ -218,25 +235,25 @@
                                    <i data-lucide="school" class="w-10 h-10 text-blue-500 flex-shrink-0"></i>
                                    <div class="flex-grow">
                                        <div class="flex justify-between items-baseline">
-                                           <h4 class="font-bold text-slate-800 dark:text-white">南京大学</h4>
+                                           <h4 class="font-bold text-gray-900 dark:text-white">南京大学</h4>
                                            <p class="text-sm font-semibold text-blue-500 dark:text-blue-400">本科在读</p>
                                        </div>
-                                       <p class="text-sm text-slate-500 dark:text-slate-400">智能科学与技术</p>
+                                       <p class="text-sm text-gray-600 dark:text-slate-400">智能科学与技术</p>
                                    </div>
                                </div>
                                <div class="border-t border-slate-200 dark:border-slate-700 my-4"></div>
                                <div class="grid grid-cols-2 gap-4 text-sm">
                                    <div>
-                                       <p class="text-slate-500 dark:text-slate-400">在校时间</p>
-                                       <p class="font-semibold text-slate-700 dark:text-slate-200">2022.09 - 至今</p>
+                                       <p class="text-gray-600 dark:text-slate-400">在校时间</p>
+                                       <p class="font-semibold text-gray-800 dark:text-slate-200">2022.09 - 至今</p>
                                    </div>
                                     <div>
-                                       <p class="text-slate-500 dark:text-slate-400">GPA / 排名</p>
-                                       <p class="font-semibold text-slate-700 dark:text-slate-200">4.44 / 5.0 (27/150)</p>
+                                       <p class="text-gray-600 dark:text-slate-400">GPA / 排名</p>
+                                       <p class="font-semibold text-gray-800 dark:text-slate-200">4.44 / 5.0 (27/150)</p>
                                    </div>
                                    <div class="col-span-2">
-                                       <p class="text-slate-500 dark:text-slate-400">所获奖项</p>
-                                       <p class="font-semibold text-slate-700 dark:text-slate-200">人民奖学金</p>
+                                       <p class="text-gray-600 dark:text-slate-400">所获奖项</p>
+                                       <p class="font-semibold text-gray-800 dark:text-slate-200">人民奖学金</p>
                                    </div>
                                </div>
                             </div>
@@ -244,7 +261,7 @@
                     </div>
 
                      <div id="courses-panel" class="view-panel hidden">
-                        <div class="max-w-2xl mx-auto space-y-4">
+                        <div class="max-w-2xl mx-auto space-y-4 relative">
                             <!-- 课程卡片 -->
                              <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
                                 <div class="flex items-center justify-between w-full">
@@ -252,7 +269,7 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="brain-circuit" class="w-6 h-6 text-blue-500 dark:text-blue-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">机器学习导论</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">机器学习导论</h4>
                                     </div>
                                     <p class="font-bold text-blue-500 dark:text-blue-400 text-lg">94分</p>
                                 </div>
@@ -263,7 +280,7 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="database-zap" class="w-6 h-6 text-green-500 dark:text-green-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数据挖掘</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据挖掘</h4>
                                     </div>
                                     <p class="font-bold text-green-500 dark:text-green-400 text-lg">96分</p>
                                 </div>
@@ -274,7 +291,7 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="sigma" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数学建模</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数学建模</h4>
                                     </div>
                                     <p class="font-bold text-purple-500 dark:text-purple-400 text-lg">95分</p>
                                 </div>
@@ -285,7 +302,7 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="git-merge" class="w-6 h-6 text-yellow-500 dark:text-yellow-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数据结构与算法</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据结构与算法</h4>
                                     </div>
                                     <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg">95分</p>
                                 </div>
@@ -296,7 +313,7 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="code-xml" class="w-6 h-6 text-red-500 dark:text-red-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">高级程序设计</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">高级程序设计</h4>
                                     </div>
                                     <p class="font-bold text-red-500 dark:text-red-400 text-lg">94分</p>
                                 </div>
@@ -307,50 +324,55 @@
                                         <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
                                             <i data-lucide="hard-drive" class="w-6 h-6 text-cyan-500 dark:text-cyan-400"></i>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">操作系统</h4>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">操作系统</h4>
                                     </div>
                                     <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg">95分</p>
                                 </div>
                             </a>
-                            <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
-                                <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                            <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
+                             <!-- Locked Courses -->
+                            <div id="locked-courses" class="space-y-4">
+                                <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
+                                    <div class="flex items-center justify-between w-full">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                                <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
+                                            </div>
+                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">线性代数</h4>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">线性代数</h4>
+                                        <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg">95分</p>
                                     </div>
-                                    <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg">95分</p>
-                                </div>
-                            </a>
-                            <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
-                                <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                            <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
+                                </a>
+                                <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
+                                    <div class="flex items-center justify-between w-full">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                                <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
+                                            </div>
+                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">微积分</h4>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">微积分</h4>
+                                        <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg">93分</p>
                                     </div>
-                                    <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg">93分</p>
-                                </div>
-                            </a>
-                            <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
-                                <div class="flex items-center justify-between w-full">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                            <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
+                                </a>
+                                <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
+                                    <div class="flex items-center justify-between w-full">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                                <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
+                                            </div>
+                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数字信号处理</h4>
                                         </div>
-                                        <h4 class="font-semibold text-slate-800 dark:text-white whitespace-nowrap">数字信号处理</h4>
+                                        <p class="font-bold text-orange-500 dark:text-orange-400 text-lg">94分</p>
                                     </div>
-                                    <p class="font-bold text-orange-500 dark:text-orange-400 text-lg">94分</p>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            <div id="courses-lock-overlay" class="lock-overlay">
+                                <i data-lucide="lock" class="w-12 h-12 text-slate-500 dark:text-slate-400"></i>
+                            </div>
                         </div>
                     </div>
 
                     <div id="projects-panel" class="view-panel hidden">
                         <div id="project-list" class="max-w-3xl mx-auto space-y-8">
-                            <!-- 项目卡片将通过JS绑定事件 -->
                              <div data-project-target="project-detail-1" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
                                 <div class="md:w-1/3 bg-gradient-to-br from-blue-400 to-sky-500 flex flex-col items-center justify-center p-8 text-white">
                                      <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
@@ -358,8 +380,8 @@
                                      <p class="font-semibold">项目</p>
                                 </div>
                                 <div class="p-6 flex flex-col md:w-2/3">
-                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">统一的核函数研究</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
+                                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">统一的核函数研究</h3>
+                                    <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
                                     <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
                                         <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">评级优秀</span>
                                         <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-sky-100 text-sky-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-sky-900/50 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-700 transition" onclick="event.stopPropagation()">
@@ -375,27 +397,32 @@
                                      <p class="font-semibold">项目</p>
                                 </div>
                                 <div class="p-6 flex flex-col md:w-2/3">
-                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">小样本学习论文复现</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
+                                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">小样本学习论文复现</h3>
+                                    <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
                                     <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
                                        <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">精度误差&lt;3%</span>
                                        <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-yellow-900/50 dark:text-yellow-300">LibFewShot</span>
                                     </div>
                                 </div>
                             </div>
-                            <div data-project-target="project-detail-3" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
-                                 <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-emerald-500 flex flex-col items-center justify-center p-8 text-white">
-                                     <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
-                                     <span class="text-5xl font-bold mt-2">03</span>
-                                     <p class="font-semibold">项目</p>
-                                </div>
-                                <div class="p-6 flex flex-col md:w-2/3">
-                                    <h3 class="text-xl font-bold mb-2 text-slate-800 dark:text-white">神经网络表示能力探究</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 flex-grow">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
-                                    <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
-                                        <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
-                                        <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
+                            <div id="locked-projects" class="relative">
+                                 <div data-project-target="project-detail-3" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
+                                     <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-emerald-500 flex flex-col items-center justify-center p-8 text-white">
+                                         <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
+                                         <span class="text-5xl font-bold mt-2">03</span>
+                                         <p class="font-semibold">项目</p>
                                     </div>
+                                    <div class="p-6 flex flex-col md:w-2/3">
+                                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">神经网络表示能力探究</h3>
+                                        <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
+                                        <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
+                                            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
+                                            <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="projects-lock-overlay" class="lock-overlay">
+                                    <i data-lucide="lock" class="w-12 h-12 text-slate-500 dark:text-slate-400"></i>
                                 </div>
                             </div>
                         </div>
@@ -405,25 +432,25 @@
             
             <section id="contact" class="py-24 bg-white dark:bg-slate-900/50">
                 <div class="container mx-auto px-6 text-center">
-                     <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
+                     <p class="text-lg text-gray-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
                     <div class="flex justify-center items-center gap-4">
                         <div class="relative tooltip-trigger">
-                            <button data-tooltip-target="tooltip-mail-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                            <button data-tooltip-target="tooltip-mail-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                                 <i data-lucide="mail" class="w-6 h-6 pointer-events-none"></i>
                             </button>
-                             <div id="tooltip-mail-footer" class="tooltip absolute bottom-full mb-2 w-max bg-slate-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
+                             <div id="tooltip-mail-footer" class="tooltip absolute bottom-full mb-2 w-max bg-gray-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
                                 chenzy2022@smail.nju.edu.cn
                             </div>
                         </div>
                         <div class="relative tooltip-trigger">
-                            <button data-tooltip-target="tooltip-phone-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                            <button data-tooltip-target="tooltip-phone-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                                 <i data-lucide="phone" class="w-6 h-6 pointer-events-none"></i>
                             </button>
-                            <div id="tooltip-phone-footer" class="tooltip absolute bottom-full mb-2 w-max bg-slate-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
+                            <div id="tooltip-phone-footer" class="tooltip absolute bottom-full mb-2 w-max bg-gray-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
                                 +86 15751668669
                             </div>
                         </div>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="GitHub">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="GitHub">
                             <i data-lucide="github" class="w-6 h-6"></i>
                         </a>
                     </div>
@@ -436,20 +463,20 @@
             <!-- 详情页 1 -->
             <div id="project-detail-1" class="view-panel hidden">
                 <div class="container mx-auto px-6 py-12">
-                    <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                    <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
                         <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">统一的核函数研究</h2>
-                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">校级本科生创新训练项目 (2023.12 - 2024.12)</p>
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">统一的核函数研究</h2>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">校级本科生创新训练项目 (2023.12 - 2024.12)</p>
                         
-                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                        <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
                                 <p>项目旨在构建统一的核函数（UNK），以联系现有的神经网络高斯过程（NNGP）以及神经正切核（NTK）这两个重要的理论框架。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">1</div>
@@ -466,7 +493,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目成果</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
                                 <ul class="space-y-4">
                                      <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="award" class="w-4 h-4"></i></div>
@@ -480,7 +507,7 @@
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-end">
-                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
                                 下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </button>
                         </div>
@@ -490,20 +517,20 @@
             <!-- 详情页 2 -->
             <div id="project-detail-2" class="view-panel hidden">
                  <div class="container mx-auto px-6 py-12">
-                     <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                     <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
                         <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">基于LibFewShot的小样本学习论文复现</h2>
-                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">机器学习课程项目 (2024.03 - 2024.07)</p>
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于LibFewShot的小样本学习论文复现</h2>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习课程项目 (2024.03 - 2024.07)</p>
                         
-                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                        <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
                                 <p>小样本学习领域的方法多样，但实现方式各不相同，导致模型之间难以进行公平比较。本项目的目标是在统一的小样本学习库（LibFewShot）框架下，复现该领域的顶会论文代码，为后续研究人员提供高质量的参考基线。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">1</div>
@@ -516,7 +543,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目成果</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
@@ -530,10 +557,10 @@
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
-                            <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                            <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
                                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
                             </button>
-                             <button data-nav-target="project-detail-3" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                             <button data-nav-target="project-detail-3" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
                                 下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </button>
                         </div>
@@ -543,20 +570,20 @@
             <!-- 详情页 3 -->
             <div id="project-detail-3" class="view-panel hidden">
                  <div class="container mx-auto px-6 py-12">
-                    <button class="back-to-main-btn mb-8 inline-flex items-center text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
+                    <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
                         <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">基于随机特征的神经网络表示能力探究</h2>
-                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">机器学习科研项目 (2024.10 - 至今)</p>
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于随机特征的神经网络表示能力探究</h2>
+                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习科研项目 (2024.10 - 至今)</p>
                         
-                        <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                        <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">项目背景</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
                                 <p>随机特征（Random Features）方法近年来在理论和应用层面均受到广泛关注，尤其在理解神经网络的表达能力、泛化性能等方面发挥了重要作用。本项目聚焦于结合随机特征和神经网络，探讨神经网络对随机特征的表示能力，并进行理论建模与实证验证。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">我的贡献</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">1</div>
@@ -569,7 +596,7 @@
                                 </ul>
                             </div>
                              <div>
-                                <h3 class="text-xl font-semibold mb-4 text-slate-800 dark:text-white">当前进度</h3>
+                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">当前进度</h3>
                                 <ul class="space-y-4">
                                      <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
@@ -583,10 +610,10 @@
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
-                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                            <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
                                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
                             </button>
-                             <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
+                             <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
                                 返回第一个项目 <i data-lucide="rotate-ccw" class="w-4 h-4 ml-2 group-hover:rotate-[-90deg] transition-transform"></i>
                             </button>
                         </div>
@@ -599,7 +626,7 @@
 
     <!-- 页脚 -->
     <footer class="bg-slate-100 dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800">
-        <div class="container mx-auto px-6 text-center text-slate-500 dark:text-slate-400">
+        <div class="container mx-auto px-6 text-center text-gray-600 dark:text-slate-400">
             <p>&copy; 2024 陈宗奕. 保留所有权利。</p>
         </div>
     </footer>
