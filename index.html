@@ -121,7 +121,19 @@
         .course-card:active {
             transform: translateY(-2px) scale(1.01) !important;
         }
-
+        
+        /* 工具提示样式 */
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
+        .tooltip-trigger:hover .tooltip:not(.is-active), .tooltip.is-active {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="transition-colors duration-300">
@@ -134,29 +146,26 @@
             </div>
             <div class="flex items-center space-x-2">
                  <!-- 联系方式图标 -->
-                <div class="relative group">
-                    <a href="mailto:chenzy2022@smail.nju.edu.cn" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                        <i data-lucide="mail" class="w-5 h-5"></i>
-                    </a>
-                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div class="relative tooltip-trigger">
+                    <button data-tooltip-target="tooltip-mail-header" class="tooltip-btn p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i data-lucide="mail" class="w-5 h-5 pointer-events-none"></i>
+                    </button>
+                    <div id="tooltip-mail-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
                         chenzy2022@smail.nju.edu.cn
                     </div>
                 </div>
-                <div class="relative group">
-                    <a href="tel:15751668669" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                        <i data-lucide="phone" class="w-5 h-5"></i>
-                    </a>
-                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        15751668669
+                <div class="relative tooltip-trigger">
+                    <button data-tooltip-target="tooltip-phone-header" class="tooltip-btn p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i data-lucide="phone" class="w-5 h-5 pointer-events-none"></i>
+                    </button>
+                    <div id="tooltip-phone-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
+                        +86 15751668669
                     </div>
                 </div>
-                <div class="relative group">
+                <div class="relative tooltip-trigger">
                     <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 block rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="github" class="w-5 h-5"></i>
                     </a>
-                    <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-max bg-slate-800 text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        GitHub 主页
-                    </div>
                 </div>
                 <!-- 分割线 -->
                 <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
@@ -396,13 +405,28 @@
             
             <section id="contact" class="py-24 bg-white dark:bg-slate-900/50">
                 <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-4xl font-bold mb-4 text-slate-800 dark:text-white">与我联系</h2>
-                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
+                     <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
                     <div class="flex justify-center items-center gap-4">
-                         <a href="mailto:chenzy2022@smail.nju.edu.cn" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition text-lg shadow-lg hover:shadow-xl">发送邮件</a>
-                        <a href="#" class="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 p-3 bg-slate-100 dark:bg-slate-800 rounded-full transition" title="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                        <div class="relative tooltip-trigger">
+                            <button data-tooltip-target="tooltip-mail-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                                <i data-lucide="mail" class="w-6 h-6 pointer-events-none"></i>
+                            </button>
+                             <div id="tooltip-mail-footer" class="tooltip absolute bottom-full mb-2 w-max bg-slate-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
+                                chenzy2022@smail.nju.edu.cn
+                            </div>
+                        </div>
+                        <div class="relative tooltip-trigger">
+                            <button data-tooltip-target="tooltip-phone-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                                <i data-lucide="phone" class="w-6 h-6 pointer-events-none"></i>
+                            </button>
+                            <div id="tooltip-phone-footer" class="tooltip absolute bottom-full mb-2 w-max bg-slate-800 text-white text-sm rounded-md px-3 py-1.5 pointer-events-none">
+                                +86 15751668669
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
                     </div>
-                    <p class="mt-8 text-slate-500 dark:text-slate-400">或致电: 15751668669</p>
                 </div>
             </section>
         </div>
@@ -602,25 +626,29 @@
             const themeToggleButton = document.getElementById('theme-toggle');
             const sunIcon = document.querySelector('.sun-icon');
             const moonIcon = document.querySelector('.moon-icon');
+            const tooltipButtons = document.querySelectorAll('.tooltip-btn');
+
 
             // 主题切换逻辑
             const applyTheme = (theme) => {
                 if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
-                    sunIcon.classList.add('hidden');
-                    moonIcon.classList.remove('hidden');
+                    if(sunIcon) sunIcon.classList.add('hidden');
+                    if(moonIcon) moonIcon.classList.remove('hidden');
                 } else {
                     document.documentElement.classList.remove('dark');
-                    sunIcon.classList.remove('hidden');
-                    moonIcon.classList.add('hidden');
+                    if(sunIcon) sunIcon.classList.remove('hidden');
+                    if(moonIcon) moonIcon.classList.add('hidden');
                 }
             };
 
-            themeToggleButton.addEventListener('click', () => {
-                const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
-                localStorage.setItem('theme', currentTheme);
-                applyTheme(currentTheme);
-            });
+            if (themeToggleButton) {
+                themeToggleButton.addEventListener('click', () => {
+                    const currentTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+                    localStorage.setItem('theme', currentTheme);
+                    applyTheme(currentTheme);
+                });
+            }
             
             // 页面加载时应用保存的主题
             const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -629,33 +657,36 @@
 
             // 更新指示器位置的函数
             function updateIndicator(activeButton) {
-                if (!activeButton) return;
+                if (!activeButton || !tabIndicator) return;
                 tabIndicator.style.left = `${activeButton.offsetLeft}px`;
                 tabIndicator.style.width = `${activeButton.offsetWidth}px`;
             }
             
             // 切换选项卡
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const currentActiveButton = tabButtonsContainer.querySelector('.active');
-                    if (currentActiveButton) {
-                        currentActiveButton.classList.remove('active');
-                    }
-                    button.classList.add('active');
-                    
-                    updateIndicator(button);
+            if (tabButtonsContainer) {
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const currentActiveButton = tabButtonsContainer.querySelector('.active');
+                        if (currentActiveButton) {
+                            currentActiveButton.classList.remove('active');
+                        }
+                        button.classList.add('active');
+                        
+                        updateIndicator(button);
 
-                    const targetId = button.dataset.target;
-                    tabPanels.forEach(panel => {
-                        const isActive = panel.id === targetId;
-                        panel.classList.toggle('hidden', !isActive);
-                        panel.classList.toggle('is-active', isActive);
+                        const targetId = button.dataset.target;
+                        tabPanels.forEach(panel => {
+                            const isActive = panel.id === targetId;
+                            panel.classList.toggle('hidden', !isActive);
+                            panel.classList.toggle('is-active', isActive);
+                        });
                     });
                 });
-            });
+            }
 
             // 显示详情视图
             function showDetailView(targetId) {
+                if (!mainView || !detailViewContainer) return;
                 mainView.classList.remove('is-active');
                 mainView.classList.add('hidden');
                 detailViewContainer.classList.remove('hidden');
@@ -672,6 +703,7 @@
 
             // 显示主视图
             function showMainView() {
+                if (!mainView || !detailViewContainer) return;
                 detailViewContainer.classList.add('hidden');
                 mainView.classList.remove('hidden');
                 mainView.classList.add('is-active');
@@ -700,6 +732,35 @@
                     showMainView();
                 });
             });
+            
+            // 工具提示交互逻辑
+            function hideAllTooltips() {
+                document.querySelectorAll('.tooltip.is-active').forEach(tooltip => {
+                    tooltip.classList.remove('is-active');
+                });
+            }
+
+            tooltipButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const targetId = button.dataset.tooltipTarget;
+                    const tooltip = document.getElementById(targetId);
+                    if (tooltip) {
+                        const isActive = tooltip.classList.contains('is-active');
+                        hideAllTooltips(); // 先隐藏所有
+                        if (!isActive) {
+                            tooltip.classList.add('is-active'); // 再显示当前这个
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.tooltip-trigger')) {
+                    hideAllTooltips();
+                }
+            });
+
 
             // 智能滚动动画的观察器
             const scrollObserver = new IntersectionObserver((entries) => {
@@ -724,10 +785,12 @@
             });
             
             // 初始化指示器位置
-            const initialActiveButton = tabButtonsContainer.querySelector('.active');
-            if (initialActiveButton) {
-                // 延迟执行以确保布局计算完成
-                setTimeout(() => updateIndicator(initialActiveButton), 100);
+            if(tabButtonsContainer) {
+                const initialActiveButton = tabButtonsContainer.querySelector('.active');
+                if (initialActiveButton) {
+                    // 延迟执行以确保布局计算完成
+                    setTimeout(() => updateIndicator(initialActiveButton), 100);
+                }
             }
         });
 
