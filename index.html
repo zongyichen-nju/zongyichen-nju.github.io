@@ -179,18 +179,18 @@
             <div class="flex items-center space-x-2">
                  <!-- 联系方式图标 -->
                 <div class="relative tooltip-trigger">
-                    <button data-tooltip-target="tooltip-mail-header" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <button data-tooltip-target="tooltip-mail-header" data-copy-content="chenzy2022@smail.nju.edu.cn" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="mail" class="w-5 h-5 pointer-events-none"></i>
                     </button>
-                    <div id="tooltip-mail-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
+                    <div id="tooltip-mail-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none" data-original-text="chenzy2022@smail.nju.edu.cn">
                         chenzy2022@smail.nju.edu.cn
                     </div>
                 </div>
                 <div class="relative tooltip-trigger">
-                    <button data-tooltip-target="tooltip-phone-header" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <button data-tooltip-target="tooltip-phone-header" data-copy-content="+8615751668669" class="tooltip-btn p-2 block rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                         <i data-lucide="phone" class="w-5 h-5 pointer-events-none"></i>
                     </button>
-                    <div id="tooltip-phone-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none">
+                    <div id="tooltip-phone-header" class="tooltip absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max bg-gray-800 text-white text-xs rounded-md px-2 py-1 pointer-events-none" data-original-text="+86 15751668669">
                         +86 15751668669
                     </div>
                 </div>
@@ -992,7 +992,9 @@
                 if(gpaInfo) gpaInfo.classList.remove('hidden');
                 if(gpaUnlockButton) gpaUnlockButton.classList.add('hidden');
                 
+                if(lockedCourses) lockedCourses.classList.remove('hidden');
                 if(coursesLockOverlay) coursesLockOverlay.style.opacity = '0';
+                
                 if(projectsLockOverlay){
                    projectsLockOverlay.style.opacity = '0';
                 }
