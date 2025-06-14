@@ -955,6 +955,7 @@
             function hideAllTooltips() {
                 document.querySelectorAll('.tooltip.is-active').forEach(tooltip => {
                     tooltip.classList.remove('is-active');
+                    tooltip.textContent = tooltip.dataset.originalText;
                 });
             }
 
@@ -963,12 +964,35 @@
                     event.stopPropagation();
                     const targetId = button.dataset.tooltipTarget;
                     const tooltip = document.getElementById(targetId);
-                    if (tooltip) {
-                        const isActive = tooltip.classList.contains('is-active');
-                        hideAllTooltips(); // 先隐藏所有
-                        if (!isActive) {
-                            tooltip.classList.add('is-active'); // 再显示当前这个
+                    const contentToCopy = button.dataset.copyContent;
+
+                    if (!tooltip || !contentToCopy) return;
+                    
+                    const isActive = tooltip.classList.contains('is-active');
+                    hideAllTooltips(); 
+
+                    if (!isActive) {
+                        const textArea = document.createElement("textarea");
+                        textArea.value = contentToCopy;
+                        textArea.style.position = "fixed";
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            const lang = document.documentElement.lang === 'zh-CN' ? 'zh-CN' : 'en';
+                            tooltip.textContent = lang === 'en' ? 'Copied!' : '已复制!';
+                        } catch (err) {
+                            console.error('Copy failed', err);
+                             tooltip.textContent = 'Copy Failed';
                         }
+                        document.body.removeChild(textArea);
+
+                        tooltip.classList.add('is-active');
+                         setTimeout(() => {
+                           if(tooltip.classList.contains('is-active')){
+                               tooltip.textContent = tooltip.dataset.originalText;
+                           }
+                        }, 2000);
                     }
                 });
             });
@@ -1004,10 +1028,12 @@
                     const lang = document.documentElement.lang === 'zh-CN' ? 'zh-CN' : 'en';
                     const unit = lang === 'en' ? 'pts' : '分';
                     el.innerHTML = `${score}<span class="text-sm font-normal">${unit}</span>`;
+                    lucide.createIcons();
                 });
                 
                 if (unlockScoresBtn) {
-                   unlockScoresBtn.querySelector('span').textContent = document.documentElement.lang === 'zh-CN' ? '已解锁' : 'Unlocked';
+                   const lang = document.documentElement.lang === 'zh-CN' ? 'zh-CN' : 'en';
+                   unlockScoresBtn.querySelector('span').textContent = lang === 'en' ? 'Unlocked' : '已解锁';
                    unlockScoresBtn.disabled = true;
                    unlockScoresBtn.querySelector('i').remove();
                    const checkIcon = document.createElement('i');
