@@ -173,7 +173,7 @@
     <!-- 导航栏 -->
     <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-900 dark:text-white">
+            <div data-translate-key="name" class="text-2xl font-bold text-gray-900 dark:text-white">
                 <a href="#">陈宗奕</a>
             </div>
             <div class="flex items-center space-x-2">
@@ -201,6 +201,10 @@
                 </div>
                 <!-- 分割线 -->
                 <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
+                <!-- 语言切换按钮 -->
+                 <button id="lang-toggle" class="p-2 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition font-semibold text-sm w-9 h-9 flex items-center justify-center">
+                    EN
+                </button>
                 <!-- 主题切换按钮 -->
                 <button id="theme-toggle" class="p-2 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                     <i data-lucide="sun" class="sun-icon"></i>
@@ -220,8 +224,8 @@
                          src="https://placehold.co/160x160/67e8f9/0f172a?text=ZY" 
                          alt="个人头像"
                          onerror="this.onerror=null;this.src='https://placehold.co/160x160/e0e0e0/333333?text=图片加载失败';">
-                    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
-                    <p class="text-xl text-gray-900 dark:text-slate-100 max-w-3xl mx-auto">
+                    <h1 data-translate-key="heroTitle" class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">你好，我是陈宗奕</h1>
+                    <p data-translate-key="heroSubtitle" class="text-xl text-gray-900 dark:text-slate-100 max-w-3xl mx-auto">
                         一名来自南京大学的本科生，主修智能科学与技术，对机器学习领域充满科研热情。
                     </p>
                 </div>
@@ -230,9 +234,9 @@
             <div class="container mx-auto px-6 py-12">
                 <div class="relative flex justify-center border-b border-slate-200 dark:border-slate-700 mb-12">
                     <div id="tab-buttons">
-                        <button data-target="about-panel" class="tab-button active text-lg font-semibold text-gray-700 dark:text-slate-300">关于我</button>
-                        <button data-target="courses-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300">主修课程</button>
-                        <button data-target="projects-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300">项目经历</button>
+                        <button data-target="about-panel" class="tab-button active text-lg font-semibold text-gray-700 dark:text-slate-300" data-translate-key="tabAbout">关于我</button>
+                        <button data-target="courses-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300" data-translate-key="tabCourses">主修课程</button>
+                        <button data-target="projects-panel" class="tab-button text-lg font-semibold text-gray-700 dark:text-slate-300" data-translate-key="tabProjects">项目经历</button>
                     </div>
                     <div id="tab-indicator" class="absolute bottom-0 h-0.5 bg-blue-600 dark:bg-blue-500 transition-all duration-300 ease-out"></div>
                 </div>
@@ -242,33 +246,37 @@
                     <div id="about-panel" class="view-panel is-active">
                         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-start">
                             <div class="text-lg text-gray-800 dark:text-slate-300 space-y-4">
-                                <p>我是一名对技术充满热忱的探索者，尤其醉心于机器学习的无限可能。在南京大学的学术殿堂中，我不仅构筑了坚实的理论基石，更在多个科研项目中将知识付诸实践，享受着从理论到应用、从抽象到具象的创造过程。</p>
-                                <p>我享受深度思考带来的挑战，也乐于在团队协作中沟通交流、碰撞思想。面对压力，我能保持坚韧；面对生活，我始终心怀热忱。</p>
+                                <p data-translate-key="aboutMe1">我是一名对技术充满热忱的探索者，尤其醉心于机器学习的无限可能。在南京大学的学术殿堂中，我不仅构筑了坚实的理论基石，更在多个科研项目中将知识付诸实践，享受着从理论到应用、从抽象到具象的创造过程。</p>
+                                <p data-translate-key="aboutMe2">我享受深度思考带来的挑战，也乐于在团队协作中沟通交流、碰撞思想。面对压力，我能保持坚韧；面对生活，我始终心怀热忱。</p>
                             </div>
                             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700/50 space-y-4">
                                <div class="flex items-center space-x-4">
                                    <i data-lucide="school" class="w-10 h-10 text-blue-500 flex-shrink-0"></i>
                                    <div class="flex-grow">
                                        <div class="flex justify-between items-baseline">
-                                           <h4 class="font-bold text-gray-900 dark:text-white">南京大学</h4>
-                                           <p class="text-sm font-semibold text-blue-500 dark:text-blue-400">本科在读</p>
+                                           <h4 data-translate-key="university" class="font-bold text-gray-900 dark:text-white">南京大学</h4>
+                                           <p data-translate-key="degree" class="text-sm font-semibold text-blue-500 dark:text-blue-400">本科在读</p>
                                        </div>
-                                       <p class="text-sm text-gray-600 dark:text-slate-400">智能科学与技术</p>
+                                       <p data-translate-key="major" class="text-sm text-gray-600 dark:text-slate-400">智能科学与技术</p>
                                    </div>
                                </div>
                                <div class="border-t border-slate-200 dark:border-slate-700 my-4"></div>
                                <div class="grid grid-cols-2 gap-4 text-sm">
                                    <div>
-                                       <p class="text-gray-600 dark:text-slate-400">在校时间</p>
-                                       <p class="font-semibold text-gray-800 dark:text-slate-200">2022.09 - 至今</p>
+                                       <p data-translate-key="eduDurationLabel" class="text-gray-600 dark:text-slate-400">在校时间</p>
+                                       <p data-translate-key="eduDuration" class="font-semibold text-gray-800 dark:text-slate-200">2022.09 - 至今</p>
                                    </div>
-                                    <div>
-                                       <p class="text-gray-600 dark:text-slate-400">GPA / 排名</p>
-                                       <p class="font-semibold text-gray-800 dark:text-slate-200">4.44 / 5.0 (27/150)</p>
+                                    <div class="relative">
+                                       <p data-translate-key="gpaLabel" class="text-gray-600 dark:text-slate-400">GPA / 排名</p>
+                                        <p id="gpa-info" class="font-semibold text-gray-800 dark:text-slate-200 hidden">4.44 / 5.0 (27/150)</p>
+                                        <button id="gpa-unlock-button" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 text-sm cursor-pointer">
+                                            <i data-lucide="lock" class="w-3 h-3"></i>
+                                            <span data-translate-key="unlockButton">点击解锁</span>
+                                        </button>
                                    </div>
                                    <div class="col-span-2">
-                                       <p class="text-gray-600 dark:text-slate-400">所获奖项</p>
-                                       <p class="font-semibold text-gray-800 dark:text-slate-200">人民奖学金</p>
+                                       <p data-translate-key="awardsLabel" class="text-gray-600 dark:text-slate-400">所获奖项</p>
+                                       <p data-translate-key="awards" class="font-semibold text-gray-800 dark:text-slate-200">人民奖学金</p>
                                    </div>
                                </div>
                             </div>
@@ -276,114 +284,112 @@
                     </div>
 
                      <div id="courses-panel" class="view-panel hidden">
-                        <div class="max-w-2xl mx-auto space-y-4 relative">
-                            <!-- Locked Courses Container -->
-                            <div id="locked-courses-container" class="space-y-4">
-                                <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
-                                    <div class="flex items-center justify-between w-full">
-                                        <div class="flex items-center space-x-4">
-                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                <i data-lucide="brain-circuit" class="w-6 h-6 text-blue-500 dark:text-blue-400"></i>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">机器学习导论</h4>
+                        <div class="max-w-2xl mx-auto space-y-4">
+                            <!-- 课程卡片 -->
+                             <a href="https://baike.baidu.com/item/机器学习" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-blue-100 to-sky-200 dark:from-blue-900/50 dark:to-sky-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="brain-circuit" class="w-6 h-6 text-blue-500 dark:text-blue-400"></i>
                                         </div>
-                                        <p class="font-bold text-blue-500 dark:text-blue-400 text-lg">94分</p>
+                                        <h4 data-translate-key="courseML" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">机器学习导论</h4>
                                     </div>
-                                </a>
-                                <a href="https://baike.baidu.com/item/数据挖掘" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/50 dark:to-emerald-900/50">
-                                    <div class="flex items-center justify-between w-full">
-                                        <div class="flex items-center space-x-4">
-                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                <i data-lucide="database-zap" class="w-6 h-6 text-green-500 dark:text-green-400"></i>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据挖掘</h4>
-                                        </div>
-                                        <p class="font-bold text-green-500 dark:text-green-400 text-lg">96分</p>
-                                    </div>
-                                </a>
-                                <a href="https://baike.baidu.com/item/数学建模" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-purple-100 to-violet-200 dark:from-purple-900/50 dark:to-violet-900/50">
-                                    <div class="flex items-center justify-between w-full">
-                                        <div class="flex items-center space-x-4">
-                                            <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                <i data-lucide="sigma" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
-                                            </div>
-                                            <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数学建模</h4>
-                                        </div>
-                                        <p class="font-bold text-purple-500 dark:text-purple-400 text-lg">95分</p>
-                                    </div>
-                                </a>
-                                <div id="locked-courses" class="space-y-4 hidden">
-                                    <a href="https://baike.baidu.com/item/数据结构" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="git-merge" class="w-6 h-6 text-yellow-500 dark:text-yellow-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据结构与算法</h4>
-                                            </div>
-                                            <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg">95分</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://baike.baidu.com/item/高级语言程序设计" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-red-100 to-rose-200 dark:from-red-900/50 dark:to-rose-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="code-xml" class="w-6 h-6 text-red-500 dark:text-red-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">高级程序设计</h4>
-                                            </div>
-                                            <p class="font-bold text-red-500 dark:text-red-400 text-lg">94分</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/50 dark:to-teal-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="hard-drive" class="w-6 h-6 text-cyan-500 dark:text-cyan-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">操作系统</h4>
-                                            </div>
-                                            <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg">95分</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">线性代数</h4>
-                                            </div>
-                                            <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg">95分</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">微积分</h4>
-                                            </div>
-                                            <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg">93分</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center space-x-4">
-                                                <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
-                                                    <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
-                                                </div>
-                                                <h4 class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数字信号处理</h4>
-                                            </div>
-                                            <p class="font-bold text-orange-500 dark:text-orange-400 text-lg">94分</p>
-                                        </div>
-                                    </a>
+                                    <p class="font-bold text-blue-500 dark:text-blue-400 text-lg course-score" data-score="94"><i data-lucide="lock" class="w-4 h-4"></i></p>
                                 </div>
-                            </div>
-                            <div id="courses-lock-overlay" class="lock-overlay">
-                                <i data-lucide="lock" class="w-12 h-12 text-slate-500 dark:text-slate-400"></i>
-                                <span class="font-semibold text-slate-600 dark:text-slate-300">点击解锁更多课程</span>
+                            </a>
+                             <a href="https://baike.baidu.com/item/数据挖掘" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/50 dark:to-emerald-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="database-zap" class="w-6 h-6 text-green-500 dark:text-green-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseDM" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据挖掘</h4>
+                                    </div>
+                                    <p class="font-bold text-green-500 dark:text-green-400 text-lg course-score" data-score="96"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/数学建模" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-purple-100 to-violet-200 dark:from-purple-900/50 dark:to-violet-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="sigma" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseMM" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数学建模</h4>
+                                    </div>
+                                    <p class="font-bold text-purple-500 dark:text-purple-400 text-lg course-score" data-score="95"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                             <a href="https://baike.baidu.com/item/数据结构" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-yellow-900/50 dark:to-amber-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="git-merge" class="w-6 h-6 text-yellow-500 dark:text-yellow-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseDS" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数据结构与算法</h4>
+                                    </div>
+                                    <p class="font-bold text-yellow-500 dark:text-yellow-400 text-lg course-score" data-score="95"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/高级语言程序设计" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-red-100 to-rose-200 dark:from-red-900/50 dark:to-rose-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="code-xml" class="w-6 h-6 text-red-500 dark:text-red-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseAP" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">高级程序设计</h4>
+                                    </div>
+                                    <p class="font-bold text-red-500 dark:text-red-400 text-lg course-score" data-score="94"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/操作系统" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-cyan-100 to-teal-200 dark:from-cyan-900/50 dark:to-teal-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="hard-drive" class="w-6 h-6 text-cyan-500 dark:text-cyan-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseOS" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">操作系统</h4>
+                                    </div>
+                                    <p class="font-bold text-cyan-500 dark:text-cyan-400 text-lg course-score" data-score="95"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/线性代数" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-fuchsia-100 to-pink-200 dark:from-fuchsia-900/50 dark:to-pink-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="function-square" class="w-6 h-6 text-fuchsia-500 dark:text-fuchsia-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseLA" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">线性代数</h4>
+                                    </div>
+                                    <p class="font-bold text-fuchsia-500 dark:text-fuchsia-400 text-lg course-score" data-score="95"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/微积分" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-indigo-100 to-slate-200 dark:from-indigo-900/50 dark:to-slate-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="infinity" class="w-6 h-6 text-indigo-500 dark:text-indigo-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseCalc" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">微积分</h4>
+                                    </div>
+                                    <p class="font-bold text-indigo-500 dark:text-indigo-400 text-lg course-score" data-score="93"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <a href="https://baike.baidu.com/item/数字信号处理" target="_blank" rel="noopener noreferrer" class="course-card animate-on-scroll initial-state bg-gradient-to-br from-orange-100 to-amber-200 dark:from-orange-900/50 dark:to-amber-900/50">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-white/50 dark:bg-white/10">
+                                            <i data-lucide="bar-chart-horizontal" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
+                                        </div>
+                                        <h4 data-translate-key="courseDSP" class="font-semibold text-gray-900 dark:text-white whitespace-nowrap">数字信号处理</h4>
+                                    </div>
+                                    <p class="font-bold text-orange-500 dark:text-orange-400 text-lg course-score" data-score="94"><i data-lucide="lock" class="w-4 h-4"></i></p>
+                                </div>
+                            </a>
+                            <div class="mt-6 text-center">
+                                <button id="unlock-scores-btn" class="inline-flex items-center gap-2 text-gray-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-semibold px-6 py-3 rounded-lg transition-colors">
+                                    <i data-lucide="lock" class="w-4 h-4"></i>
+                                    <span data-translate-key="unlockScores">显示成绩</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -394,15 +400,15 @@
                                 <div class="md:w-1/3 bg-gradient-to-br from-blue-400 to-sky-500 flex flex-col items-center justify-center p-8 text-white">
                                      <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
                                      <span class="text-5xl font-bold mt-2">01</span>
-                                     <p class="font-semibold">项目</p>
+                                     <p data-translate-key="projectLabel" class="font-semibold">项目</p>
                                 </div>
                                 <div class="p-6 flex flex-col md:w-2/3">
-                                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">统一的核函数研究</h3>
-                                    <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
+                                    <h3 data-translate-key="project1Title" class="text-xl font-bold mb-2 text-gray-900 dark:text-white">统一的核函数研究</h3>
+                                    <p data-translate-key="project1Desc" class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">作为项目第一负责人，构建统一核函数（UNK）以连接NNGP与NTK理论框架，并通过实验验证了方法的有效性。</p>
                                     <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
-                                        <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">评级优秀</span>
+                                        <span data-translate-key="project1Tag1" class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">评级优秀</span>
                                         <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-sky-100 text-sky-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-sky-900/50 dark:text-sky-300 hover:bg-sky-200 dark:hover:bg-sky-700 transition" onclick="event.stopPropagation()">
-                                            <i data-lucide="file-text" class="w-4 h-4 mr-1.5"></i>查看论文
+                                            <i data-lucide="file-text" class="w-4 h-4 mr-1.5"></i><span data-translate-key="viewPaper">查看论文</span>
                                         </a>
                                     </div>
                                 </div>
@@ -411,36 +417,36 @@
                                 <div class="md:w-1/3 bg-gradient-to-br from-amber-400 to-yellow-500 flex flex-col items-center justify-center p-8 text-white">
                                      <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
                                      <span class="text-5xl font-bold mt-2">02</span>
-                                     <p class="font-semibold">项目</p>
+                                     <p data-translate-key="projectLabel" class="font-semibold">项目</p>
                                 </div>
                                 <div class="p-6 flex flex-col md:w-2/3">
-                                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">小样本学习论文复现</h3>
-                                    <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
+                                    <h3 data-translate-key="project2Title" class="text-xl font-bold mb-2 text-gray-900 dark:text-white">小样本学习论文复现</h3>
+                                    <p data-translate-key="project2Desc" class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">在LibFewShot框架下复现顶会论文代码，测试并对比性能，为社区贡献了高质量、标准化的代码资源。</p>
                                     <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
-                                       <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">精度误差&lt;3%</span>
+                                       <span data-translate-key="project2Tag1" class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-green-900/50 dark:text-green-300">精度误差&lt;3%</span>
                                        <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-yellow-900/50 dark:text-yellow-300">LibFewShot</span>
                                     </div>
                                 </div>
                             </div>
-                            <div id="locked-projects" class="relative">
-                                 <div data-project-target="project-detail-3" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
+                            <div class="relative">
+                                 <div data-project-target="project-detail-3" id="locked-projects" class="animate-on-scroll initial-state bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col md:flex-row cursor-pointer">
                                      <div class="md:w-1/3 bg-gradient-to-br from-green-400 to-emerald-500 flex flex-col items-center justify-center p-8 text-white">
                                          <i data-lucide="box" class="w-12 h-12 opacity-80"></i>
                                          <span class="text-5xl font-bold mt-2">03</span>
-                                         <p class="font-semibold">项目</p>
+                                         <p data-translate-key="projectLabel" class="font-semibold">项目</p>
                                     </div>
                                     <div class="p-6 flex flex-col md:w-2/3">
-                                        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">神经网络表示能力探究</h3>
-                                        <p class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
+                                        <h3 data-translate-key="project3Title" class="text-xl font-bold mb-2 text-gray-900 dark:text-white">神经网络表示能力探究</h3>
+                                        <p data-translate-key="project3Desc" class="text-gray-700 dark:text-slate-400 mb-4 flex-grow">借助随机特征理论，推导了神经网络重建后的随机特征模型的泛化误差与后验方差，并进行理论与实证验证。</p>
                                         <div class="pt-4 mt-auto border-t border-slate-200 dark:border-slate-700 flex flex-wrap gap-2 items-center">
-                                            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
-                                            <span class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
+                                            <span data-translate-key="project3Tag1" class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-blue-900/50 dark:text-blue-300">论文撰写中</span>
+                                            <span data-translate-key="project3Tag2" class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full dark:bg-purple-900/50 dark:text-purple-300">随机特征</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="projects-lock-overlay" class="lock-overlay">
                                      <i data-lucide="lock" class="w-12 h-12 text-slate-500 dark:text-slate-400"></i>
-                                     <span class="font-semibold text-slate-600 dark:text-slate-300">点击解锁更多项目</span>
+                                     <span data-translate-key="unlockProjects" class="font-semibold text-slate-600 dark:text-slate-300">点击解锁更多项目</span>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +456,7 @@
             
             <section id="contact" class="py-24 bg-white dark:bg-slate-900/50">
                 <div class="container mx-auto px-6 text-center">
-                     <p class="text-lg text-gray-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
+                     <p data-translate-key="contactTitle" class="text-lg text-gray-700 dark:text-slate-300 mb-8 max-w-2xl mx-auto">我正在积极寻找机器学习方向的科研机会，期待与您交流合作。</p>
                     <div class="flex justify-center items-center gap-4">
                         <div class="relative tooltip-trigger">
                             <button data-tooltip-target="tooltip-mail-footer" class="tooltip-btn p-3 bg-slate-100 dark:bg-slate-800 rounded-full text-gray-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
@@ -482,51 +488,51 @@
             <div id="project-detail-1" class="view-panel hidden">
                 <div class="container mx-auto px-6 py-12">
                     <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
-                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i><span data-translate-key="backButton">返回</span>
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">统一的核函数研究</h2>
-                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">校级本科生创新训练项目 (2023.12 - 2024.12)</p>
+                        <h2 data-translate-key="detail1Title" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">统一的核函数研究</h2>
+                        <p data-translate-key="detail1Subtitle" class="text-lg text-gray-600 dark:text-slate-400 mb-8">校级本科生创新训练项目 (2023.12 - 2024.12)</p>
                         
                         <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
-                                <p>项目旨在构建统一的核函数（UNK），以联系现有的神经网络高斯过程（NNGP）以及神经正切核（NTK）这两个重要的理论框架。</p>
+                                <h3 data-translate-key="detailBg" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
+                                <p data-translate-key="detail1BgText">项目旨在构建统一的核函数（UNK），以联系现有的神经网络高斯过程（NNGP）以及神经正切核（NTK）这两个重要的理论框架。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
+                                <h3 data-translate-key="detailContribution" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">1</div>
-                                        <p class="flex-1">担任项目第一负责人，负责项目相关的答辩工作。</p>
+                                        <p data-translate-key="detail1Cont1" class="flex-1">担任项目第一负责人，负责项目相关的答辩工作。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">2</div>
-                                        <p class="flex-1">协助检验UNK理论，并借助该理论来改进传统的梯度下降方法。</p>
+                                        <p data-translate-key="detail1Cont2" class="flex-1">协助检验UNK理论，并借助该理论来改进传统的梯度下降方法。</p>
                                     </li>
                                      <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">3</div>
-                                        <p class="flex-1">负责项目所有实验部分，在MNIST数据集上验证了所提出UNK方法的有效性，其能在与基线方法准确率相近的情况下实现更快的收敛速度。</p>
+                                        <p data-translate-key="detail1Cont3" class="flex-1">负责项目所有实验部分，在MNIST数据集上验证了所提出UNK方法的有效性，其能在与基线方法准确率相近的情况下实现更快的收敛速度。</p>
                                     </li>
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
+                                <h3 data-translate-key="detailResult" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
                                 <ul class="space-y-4">
                                      <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="award" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">项目成功结项，最终评级为 **优秀**。</p>
+                                        <p data-translate-key="detail1Result1" class="flex-1">项目成功结项，最终评级为 **优秀**。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="file-text" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">已形成科研论文 <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">"A Unified Kernel for Neural Network Learning"</a>，以共同第二作者身份正在投稿中。</p>
+                                        <p data-translate-key="detail1Result2" class="flex-1">已形成科研论文 <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">"A Unified Kernel for Neural Network Learning"</a>，以共同第二作者身份正在投稿中。</p>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-end">
                             <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
-                                下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                <span data-translate-key="nextProject">下一个项目</span> <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </button>
                         </div>
                     </div>
@@ -536,103 +542,103 @@
             <div id="project-detail-2" class="view-panel hidden">
                  <div class="container mx-auto px-6 py-12">
                      <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
-                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i><span data-translate-key="backButton2">返回</span>
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于LibFewShot的小样本学习论文复现</h2>
-                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习课程项目 (2024.03 - 2024.07)</p>
+                        <h2 data-translate-key="detail2Title" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于LibFewShot的小样本学习论文复现</h2>
+                        <p data-translate-key="detail2Subtitle" class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习课程项目 (2024.03 - 2024.07)</p>
                         
                         <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
-                                <p>小样本学习领域的方法多样，但实现方式各不相同，导致模型之间难以进行公平比较。本项目的目标是在统一的小样本学习库（LibFewShot）框架下，复现该领域的顶会论文代码，为后续研究人员提供高质量的参考基线。</p>
+                                <h3 data-translate-key="detailBg2" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
+                                <p data-translate-key="detail2BgText">小样本学习领域的方法多样，但实现方式各不相同，导致模型之间难以进行公平比较。本项目的目标是在统一的小样本学习库（LibFewShot）框架下，复现该领域的顶会论文代码，为后续研究人员提供高质量的参考基线。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
+                                <h3 data-translate-key="detailContribution2" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">1</div>
-                                        <p class="flex-1">在LibFewShot框架下，完整复现了《DiffKendall: A Novel Approach for Few-Shot Learning with Differentiable Kendall' Correlation》一文的核心代码。</p>
+                                        <p data-translate-key="detail2Cont1" class="flex-1">在LibFewShot框架下，完整复现了《DiffKendall: A Novel Approach for Few-Shot Learning with Differentiable Kendall' Correlation》一文的核心代码。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm">2</div>
-                                        <p class="flex-1">对复现代码进行了全面的性能测试，并将其结果与原论文中的数据进行对比分析，撰写了详细的项目报告。</p>
+                                        <p data-translate-key="detail2Cont2" class="flex-1">对复现代码进行了全面的性能测试，并将其结果与原论文中的数据进行对比分析，撰写了详细的项目报告。</p>
                                     </li>
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
+                                <h3 data-translate-key="detailResult2" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目成果</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">代码实现精度与原论文相比，误差控制在 **3%** 以内。</p>
+                                        <p data-translate-key="detail2Result1" class="flex-1">代码实现精度与原论文相比，误差控制在 **3%** 以内。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="code-2" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">为开源社区贡献了高质量、标准化的代码资源，促进了小样本学习领域的可复现性研究。</p>
+                                        <p data-translate-key="detail2Result2" class="flex-1">为开源社区贡献了高质量、标准化的代码资源，促进了小样本学习领域的可复现性研究。</p>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
                             <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
-                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> <span data-translate-key="prevProject">上一个项目</span>
                             </button>
                              <button data-nav-target="project-detail-3" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
-                                下一个项目 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                <span data-translate-key="nextProject2">下一个项目</span> <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- 详情页 3 -->
-            <div id="project-detail-3" class="view-panel hidden">
+            <div id="project-detail-3" class="view-panel hidden" data-is-locked="true">
                  <div class="container mx-auto px-6 py-12">
                     <button class="back-to-main-btn mb-8 inline-flex items-center text-gray-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition group">
-                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>返回
+                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i><span data-translate-key="backButton3">返回</span>
                     </button>
                     <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl">
-                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于随机特征的神经网络表示能力探究</h2>
-                        <p class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习科研项目 (2024.10 - 至今)</p>
+                        <h2 data-translate-key="detail3Title" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">基于随机特征的神经网络表示能力探究</h2>
+                        <p data-translate-key="detail3Subtitle" class="text-lg text-gray-600 dark:text-slate-400 mb-8">机器学习科研项目 (2024.10 - 至今)</p>
                         
                         <div class="space-y-6 text-gray-800 dark:text-slate-300">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
-                                <p>随机特征（Random Features）方法近年来在理论和应用层面均受到广泛关注，尤其在理解神经网络的表达能力、泛化性能等方面发挥了重要作用。本项目聚焦于结合随机特征和神经网络，探讨神经网络对随机特征的表示能力，并进行理论建模与实证验证。</p>
+                                <h3 data-translate-key="detailBg3" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">项目背景</h3>
+                                <p data-translate-key="detail3BgText">随机特征（Random Features）方法近年来在理论和应用层面均受到广泛关注，尤其在理解神经网络的表达能力、泛化性能等方面发挥了重要作用。本项目聚焦于结合随机特征和神经网络，探讨神经网络对随机特征的表示能力，并进行理论建模与实证验证。</p>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
+                                <h3 data-translate-key="detailContribution3" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">我的贡献</h3>
                                 <ul class="space-y-4">
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">1</div>
-                                        <p class="flex-1">借助传统随机特征理论，成功推导了神经网络重建后的随机特征模型的泛化误差与后验方差。</p>
+                                        <p data-translate-key="detail3Cont1" class="flex-1">借助传统随机特征理论，成功推导了神经网络重建后的随机特征模型的泛化误差与后验方差。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm">2</div>
-                                        <p class="flex-1">在多个模拟数据集上进行了实验，验证了理论结果的正确性与可行性。</p>
+                                        <p data-translate-key="detail3Cont2" class="flex-1">在多个模拟数据集上进行了实验，验证了理论结果的正确性与可行性。</p>
                                     </li>
                                 </ul>
                             </div>
                              <div>
-                                <h3 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">当前进度</h3>
+                                <h3 data-translate-key="detailProgress" class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">当前进度</h3>
                                 <ul class="space-y-4">
                                      <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">已通过实验完整验证理论可行性。</p>
+                                        <p data-translate-key="detail3Prog1" class="flex-1">已通过实验完整验证理论可行性。</p>
                                     </li>
                                     <li class="flex items-start space-x-4">
                                         <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm"><i data-lucide="edit-3" class="w-4 h-4"></i></div>
-                                        <p class="flex-1">正在进行最后的实验整理，并着手撰写科研论文。</p>
+                                        <p data-translate-key="detail3Prog2" class="flex-1">正在进行最后的实验整理，并着手撰写科研论文。</p>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mt-12 pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between">
                             <button data-nav-target="project-detail-2" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
-                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> 上一个项目
+                                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> <span data-translate-key="prevProject2">上一个项目</span>
                             </button>
                              <button data-nav-target="project-detail-1" class="project-nav-btn group inline-flex items-center px-4 py-2 bg-slate-100 dark:bg-slate-700 rounded-lg text-gray-800 dark:text-slate-200 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-all">
-                                返回第一个项目 <i data-lucide="rotate-ccw" class="w-4 h-4 ml-2 group-hover:rotate-[-90deg] transition-transform"></i>
+                                <span data-translate-key="backToFirst">返回第一个项目</span> <i data-lucide="rotate-ccw" class="w-4 h-4 ml-2 group-hover:rotate-[-90deg] transition-transform"></i>
                             </button>
                         </div>
                     </div>
@@ -645,19 +651,19 @@
     <!-- 页脚 -->
     <footer class="bg-slate-100 dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800">
         <div class="container mx-auto px-6 text-center text-gray-600 dark:text-slate-400">
-            <p>&copy; 2024 陈宗奕. 保留所有权利。</p>
+            <p>&copy; 2024 <span data-translate-key="footerName">陈宗奕</span>. <span data-translate-key="footerRights">保留所有权利。</span></p>
         </div>
     </footer>
 
     <!-- 密码模态框 -->
     <div id="password-modal-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden">
         <div id="password-modal" class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 w-full max-w-sm">
-            <h3 class="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">内容已锁定</h3>
-            <p class="text-center text-gray-600 dark:text-slate-400 mb-6 text-sm">请输入密码以查看所有内容</p>
+            <h3 data-translate-key="modalTitle" class="text-xl font-bold text-center text-gray-900 dark:text-white mb-2">内容已锁定</h3>
+            <p data-translate-key="modalSubtitle" class="text-center text-gray-600 dark:text-slate-400 mb-6 text-sm">请输入密码以查看所有内容</p>
             <form id="password-form">
-                <input type="password" id="password-input" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="请输入密码...">
+                <input type="password" id="password-input" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" data-translate-key="modalPlaceholder" placeholder="请输入密码...">
                 <p id="password-error" class="text-red-500 text-xs mt-2 text-center h-4"></p>
-                <button type="submit" class="w-full mt-4 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">解锁</button>
+                <button type="submit" class="w-full mt-4 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition" data-translate-key="modalButton">解锁</button>
             </form>
         </div>
     </div>
@@ -667,6 +673,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             // 渲染 Lucide 图标
             lucide.createIcons();
+            
+            let isContentUnlocked = false;
 
             // 获取所有视图和按钮
             const mainView = document.getElementById('main-view');
@@ -689,13 +697,17 @@
             
             const lockedCourses = document.getElementById('locked-courses');
             const coursesLockOverlay = document.getElementById('courses-lock-overlay');
-            const lockedProjects = document.getElementById('locked-projects');
+            const lockedProjectsContainer = document.getElementById('locked-projects');
             const projectsLockOverlay = document.getElementById('projects-lock-overlay');
             const passwordModalOverlay = document.getElementById('password-modal-overlay');
             const passwordModal = document.getElementById('password-modal');
             const passwordForm = document.getElementById('password-form');
             const passwordInput = document.getElementById('password-input');
             const passwordError = document.getElementById('password-error');
+            const gpaInfo = document.getElementById('gpa-info');
+            const gpaUnlockButton = document.getElementById('gpa-unlock-button');
+            const langToggleButton = document.getElementById('lang-toggle');
+            const unlockScoresBtn = document.getElementById('unlock-scores-btn');
 
 
             // 主题切换逻辑
@@ -722,6 +734,138 @@
             // 页面加载时应用保存的主题
             const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             applyTheme(savedTheme);
+
+            // 语言切换逻辑
+            const translations = {
+                en: {
+                    name: "Zongyi Chen",
+                    heroTitle: "Hello, I'm Zongyi Chen",
+                    heroSubtitle: "An undergraduate from Nanjing University, majoring in Intelligent Science and Technology, with a deep passion for machine learning research.",
+                    tabAbout: "About Me",
+                    tabCourses: "Courses",
+                    tabProjects: "Projects",
+                    aboutMe1: "I am an explorer passionate about technology, especially captivated by the infinite possibilities of machine learning. At Nanjing University, I've not only built a solid theoretical foundation but also applied my knowledge in various research projects, enjoying the creative process from theory to application, from abstract to concrete.",
+                    aboutMe2: "I enjoy the challenges of deep thinking and thrive on communicating and colliding ideas in team collaborations. I remain resilient under pressure and maintain a heartfelt enthusiasm for life.",
+                    university: "Nanjing University",
+                    degree: "Undergraduate",
+                    major: "Intelligent Science & Technology",
+                    eduDurationLabel: "Duration",
+                    eduDuration: "2022.09 - Present",
+                    gpaLabel: "GPA / Rank",
+                    unlockButton: "Click to Unlock",
+                    awardsLabel: "Awards",
+                    awards: "People's Scholarship",
+                    courseML: "Intro to Machine Learning",
+                    courseDM: "Data Mining",
+                    courseMM: "Mathematical Modeling",
+                    courseDS: "Data Structures & Algorithms",
+                    courseAP: "Advanced Programming",
+                    courseOS: "Operating Systems",
+                    courseLA: "Linear Algebra",
+                    courseCalc: "Calculus",
+                    courseDSP: "Digital Signal Processing",
+                    pointsUnit: "pts",
+                    unlockScores: "Show Scores",
+                    unlockProjects: "Click to unlock more projects",
+                    projectLabel: "Project",
+                    project1Title: "A Unified Kernel for Neural Network Learning",
+                    project1Desc: "As the project leader, I constructed a Unified Neural Kernel (UNK) to connect the NNGP and NTK theoretical frameworks, and validated its effectiveness through experiments.",
+                    project1Tag1: "Excellent",
+                    viewPaper: "View Paper",
+                    project2Title: "Few-Shot Learning Paper Reproduction based on LibFewShot",
+                    project2Desc: "Reproduced top-tier conference paper code within the LibFewShot framework, tested its performance, and contributed high-quality, standardized code resources to the community.",
+                    project2Tag1: "Accuracy <3% diff.",
+                    project3Title: "Exploring the Representation Power of Neural Networks via Random Features",
+                    project3Desc: "Leveraging random features theory, I derived the generalization error and posterior variance of a reconstructed neural network model, validating the theory with empirical evidence.",
+                    project3Tag1: "Writing Paper",
+                    project3Tag2: "Random Features",
+                    contactTitle: "I am actively seeking research opportunities in machine learning and look forward to collaborating with you.",
+                    backButton: "Back",
+                    backButton2: "Back",
+                    backButton3: "Back",
+                    detail1Title: "A Unified Kernel for Neural Network Learning",
+                    detail1Subtitle: "University-level Undergraduate Innovation Project (2023.12 - 2024.12)",
+                    detailBg: "Background",
+                    detailContribution: "My Contribution",
+                    detailResult: "Achievements",
+                    detail1BgText: "The project aims to construct a Unified Neural Kernel (UNK) to connect two important theoretical frameworks: Neural Network Gaussian Process (NNGP) and Neural Tangent Kernel (NTK).",
+                    detail1Cont1: "Served as the primary project leader, responsible for all related presentations and defenses.",
+                    detail1Cont2: "Assisted in verifying the UNK theory and utilized it to improve traditional gradient descent methods.",
+                    detail1Cont3: "Managed all experimental parts, validating the proposed UNK method's effectiveness on the MNIST dataset, achieving faster convergence with comparable accuracy to baselines.",
+                    detail1Result1: "The project was successfully concluded with a rating of **Excellent**.",
+                    detail1Result2: 'A research paper, <a href="https://arxiv.org/abs/2403.17467" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">"A Unified Kernel for Neural Network Learning"</a>, has been co-authored (as second author) and is currently under submission.',
+                    nextProject: "Next Project",
+                    detail2Title: "Few-Shot Learning Paper Reproduction based on LibFewShot",
+                    detail2Subtitle: "Machine Learning Course Project (2024.03 - 2024.07)",
+                    detailBg2: "Background",
+                    detail2BgText: "Methods in few-shot learning are diverse and implemented differently, making fair comparisons difficult. This project aimed to reproduce top-tier conference paper code within the unified LibFewShot framework to provide a high-quality baseline for researchers.",
+                    detail2Cont1: "Fully reproduced the core code of 'DiffKendall: A Novel Approach for Few-Shot Learning with Differentiable Kendall's Correlation' within the LibFewShot framework.",
+                    detailContribution2: "My Contribution",
+                    detail2Cont2: "Conducted comprehensive performance tests on the reproduced code, compared the results with the original paper, and wrote a detailed project report.",
+                    detailResult2: "Achievements",
+                    detail2Result1: "The implemented code's accuracy is within a **3%** margin of error compared to the original paper.",
+                    detail2Result2: "Contributed high-quality, standardized code resources to the open-source community, promoting reproducibility in the few-shot learning field.",
+                    prevProject: "Previous Project",
+                    detail3Title: "Exploring the Representation Power of Neural Networks via Random Features",
+                    detail3Subtitle: "Machine Learning Research Project (2024.10 - Present)",
+                    detailBg3: "Background",
+                    detail3BgText: "The Random Features method has gained significant attention in both theory and application, playing a crucial role in understanding the representation power and generalization performance of neural networks. This project focuses on combining random features with neural networks to explore their representation capabilities, supported by theoretical modeling and empirical validation.",
+                    detailContribution3: "My Contribution",
+                    detail3Cont1: "Utilizing traditional random features theory, I successfully derived the generalization error and posterior variance for a reconstructed neural network model.",
+                    detail3Cont2: "Conducted experiments on multiple simulated datasets to verify the correctness and feasibility of the theoretical results.",
+                    detailProgress: "Current Progress",
+                    detail3Prog1: "The feasibility of the theory has been fully verified through experiments.",
+                    detail3Prog2: "Currently finalizing experiments and beginning to write the research paper.",
+                    prevProject2: "Previous Project",
+                    backToFirst: "Back to First Project",
+                    footerName: "Zongyi Chen",
+                    footerRights: "All Rights Reserved.",
+                    modalTitle: "Content Locked",
+                    modalSubtitle: "Please enter the password to view all content.",
+                    modalPlaceholder: "Enter password...",
+                    modalButton: "Unlock",
+                    passwordError: "Incorrect password, please try again."
+                }
+            };
+            
+            const originalTexts = {};
+
+            function storeOriginalTexts() {
+                 document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.dataset.translateKey;
+                    originalTexts[key] = el.innerHTML;
+                });
+            }
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                if (lang === 'en') {
+                    langToggleButton.textContent = '中';
+                } else {
+                    langToggleButton.textContent = 'EN';
+                }
+
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.dataset.translateKey;
+                    const translation = translations.en[key];
+
+                    if (lang === 'en' && translation) {
+                        el.innerHTML = translation;
+                    } else if (lang === 'zh-CN' && originalTexts[key]) {
+                        el.innerHTML = originalTexts[key];
+                    }
+                });
+                 // Re-render icons after language switch if needed
+                lucide.createIcons();
+            }
+
+             if (langToggleButton) {
+                langToggleButton.addEventListener('click', () => {
+                    const currentLang = document.documentElement.lang === 'zh-CN' ? 'en' : 'zh-CN';
+                    localStorage.setItem('language', currentLang);
+                    setLanguage(currentLang);
+                });
+            }
 
 
             // 更新指示器位置的函数
@@ -755,6 +899,11 @@
 
             // 显示详情视图
             function showDetailView(targetId) {
+                if (document.getElementById(targetId)?.dataset.isLocked === 'true' && !isContentUnlocked) {
+                    showPasswordModal();
+                    return;
+                }
+
                 if (!mainView || !detailViewContainer) return;
                 mainView.classList.remove('is-active');
                 mainView.classList.add('hidden');
@@ -837,9 +986,47 @@
             function hidePasswordModal() {
                  if(passwordModalOverlay) passwordModalOverlay.classList.add('hidden');
             }
+
+            function unlockContent() {
+                isContentUnlocked = true;
+                if(gpaInfo) gpaInfo.classList.remove('hidden');
+                if(gpaUnlockButton) gpaUnlockButton.classList.add('hidden');
+                
+                if(coursesLockOverlay) coursesLockOverlay.style.opacity = '0';
+                if(projectsLockOverlay){
+                   projectsLockOverlay.style.opacity = '0';
+                }
+                
+                document.querySelectorAll('.course-score').forEach(el => {
+                    const score = el.dataset.score;
+                    const lang = document.documentElement.lang === 'zh-CN' ? 'zh-CN' : 'en';
+                    const unit = lang === 'en' ? 'pts' : '分';
+                    el.innerHTML = `${score}<span class="text-sm font-normal">${unit}</span>`;
+                });
+                
+                if (unlockScoresBtn) {
+                   unlockScoresBtn.querySelector('span').textContent = document.documentElement.lang === 'zh-CN' ? '已解锁' : 'Unlocked';
+                   unlockScoresBtn.disabled = true;
+                   unlockScoresBtn.querySelector('i').remove();
+                   const checkIcon = document.createElement('i');
+                   checkIcon.setAttribute('data-lucide', 'check');
+                   unlockScoresBtn.prepend(checkIcon);
+                   lucide.createIcons();
+                }
+                
+                setTimeout(() => {
+                     if(coursesLockOverlay) coursesLockOverlay.style.display = 'none';
+                     if(projectsLockOverlay){
+                         projectsLockOverlay.style.display = 'none';
+                     }
+                }, 300);
+            }
             
             if(coursesLockOverlay) coursesLockOverlay.addEventListener('click', showPasswordModal);
             if(projectsLockOverlay) projectsLockOverlay.addEventListener('click', showPasswordModal);
+            if(gpaUnlockButton) gpaUnlockButton.addEventListener('click', showPasswordModal);
+            if(unlockScoresBtn) unlockScoresBtn.addEventListener('click', showPasswordModal);
+
             if(passwordModalOverlay) passwordModalOverlay.addEventListener('click', (e) => {
                 if(e.target === passwordModalOverlay) hidePasswordModal();
             });
@@ -848,26 +1035,15 @@
                 passwordForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     if(passwordInput.value === '20040930') {
-                        if(lockedCourses) lockedCourses.classList.remove('hidden');
-                        if(coursesLockOverlay) coursesLockOverlay.style.opacity = '0';
-                        
-                        if(lockedProjects.querySelector('.lock-overlay')){
-                           lockedProjects.querySelector('.lock-overlay').style.opacity = '0';
-                        }
-                        
-                        setTimeout(() => {
-                             if(coursesLockOverlay) coursesLockOverlay.style.display = 'none';
-                             if(lockedProjects.querySelector('.lock-overlay')){
-                                 lockedProjects.querySelector('.lock-overlay').style.display = 'none';
-                             }
-                        }, 300);
-                        
+                        unlockContent();
                         hidePasswordModal();
                     } else {
-                        passwordError.textContent = '密码错误，请重试';
-                        passwordInput.classList.add('shake');
+                        const lang = document.documentElement.lang.startsWith('zh') ? 'zh-CN' : 'en';
+                        const errorMsg = lang === 'en' ? translations.en.passwordError : "密码错误，请重试";
+                        passwordError.textContent = errorMsg;
+                        passwordModal.classList.add('shake');
                         setTimeout(() => {
-                           passwordInput.classList.remove('shake');
+                           passwordModal.classList.remove('shake');
                            passwordError.textContent = '';
                         }, 1000);
                     }
@@ -897,7 +1073,11 @@
                 scrollObserver.observe(element);
             });
             
-            // 初始化指示器位置
+            // 页面加载时初始化
+            storeOriginalTexts();
+            const savedLang = localStorage.getItem('language') || 'zh-CN';
+            setLanguage(savedLang);
+
             if(tabButtonsContainer) {
                 const initialActiveButton = tabButtonsContainer.querySelector('.active');
                 if (initialActiveButton) {
